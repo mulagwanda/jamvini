@@ -1,0 +1,38 @@
+{
+    "name": "Client Management",
+    "slug": "clients",
+    "version": "1.0.0",
+    "description": "Manage hosting clients with profiles, contacts, and billing information",
+    "author": "JamVini",
+    "type": "module",
+    "core": true,
+    "dependencies": [],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "users",
+            "label": "Clients",
+            "route": "admin.clients.index",
+            "position": 10,
+            "section": "main",
+            "children": [
+                {"label": "All Clients", "route": "admin.clients.index"},
+                {"label": "Add New", "route": "admin.clients.create"}
+            ]
+        }
+    },
+    "permissions": [
+        "manage_clients",
+        "view_clients",
+        "create_clients",
+        "edit_clients",
+        "delete_clients"
+    ],
+    "hooks_provides": [
+        "client.created",
+        "client.updated",
+        "client.deleting",
+        "client.deleted"
+    ],
+    "hooks_listens": []
+}

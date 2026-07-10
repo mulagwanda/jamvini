@@ -1,0 +1,1 @@
+<div class="jv-widget-kpi"><div><div class="label">Pulse Status</div><div class="value">Live</div><div class="meta">Theme widgets active</div></div><div class="widget-icon">{{ jv_icon('activity') }}</div></div>

@@ -1,0 +1,23 @@
+{
+    "name": "Reports",
+    "slug": "reports",
+    "version": "1.0.0",
+    "description": "Unified reporting platform for JamVini with plugin-provided reports, filters, charts, and exports.",
+    "author": "JamVini",
+    "type": "module",
+    "core": true,
+    "dependencies": [],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "bar-chart-3",
+            "label": "Reports",
+            "route": "admin.reports.index",
+            "position": 72,
+            "section": "main"
+        }
+    },
+    "permissions": ["reports.read", "reports.write", "reports.manage"],
+    "hooks_provides": ["reports.registered", "reports.exported"],
+    "hooks_listens": []
+}

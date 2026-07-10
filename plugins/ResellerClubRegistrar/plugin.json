@@ -1,0 +1,25 @@
+{
+    "name": "ResellerClub Registrar",
+    "slug": "resellerclub-registrar",
+    "version": "1.0.0",
+    "description": "Register .com, .net, .org, .io, .co, .africa and 500+ TLDs via ResellerClub",
+    "author": "JamVini",
+    "type": "domain_registrar",
+    "core": false,
+    "premium": true,
+    "price": "TZS 80,000",
+    "dependencies": ["domains"],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "plug",
+            "label": "ResellerClub",
+            "route": "admin.resellerclub.settings",
+            "position": 62,
+            "section": "operations"
+        }
+    },
+    "permissions": ["manage_resellerclub"],
+    "hooks_provides": ["resellerclub.domain_registered", "resellerclub.domain_transferred"],
+    "hooks_listens": ["order.completed", "domain.renewing"]
+}

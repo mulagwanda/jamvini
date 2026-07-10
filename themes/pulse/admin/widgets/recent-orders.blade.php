@@ -1,0 +1,1 @@
+<div class="jv-widget-kpi"><div><div class="label">Recent Orders</div><div class="value">{{ \Plugins\Orders\src\Models\Order::latest()->limit(5)->count() }}</div><div class="meta">Latest order activity</div></div><div class="widget-icon">{{ jv_icon('shopping-cart') }}</div></div>

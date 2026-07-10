@@ -1,0 +1,241 @@
+{
+  "homepage_slug": "home",
+  "settings": {
+    "theme_pulse_primary_color": "#1a5276",
+    "theme_pulse_secondary_color": "#2e86c1",
+    "theme_pulse_accent_color": "#f39c12"
+  },
+  "pages": [
+    {
+      "title": "Home",
+      "slug": "home",
+      "excerpt": "A complete starter homepage for an East African hosting provider.",
+      "status": "published",
+      "template": "default",
+      "blocks": [
+        {
+          "type": "hero",
+          "data": {
+            "eyebrow": "JamVini Pulse",
+            "title": "Hosting that keeps your business moving",
+            "subtitle": "Fast web hosting, .tz domains, billing, automation, and support from one calm client experience.",
+            "align": "center",
+            "showDomainSearch": true,
+            "primary_button_text": "View Hosting Plans",
+            "primary_button_url": "/pricing",
+            "secondary_button_text": "Talk to Sales",
+            "secondary_button_url": "/contact"
+          },
+          "styles": { "padding": "88px 0", "background": "#f8fafc" }
+        },
+        {
+          "type": "features",
+          "data": {
+            "title": "Everything a hosting client expects",
+            "subtitle": "A polished first impression with the practical pages your customers need before they order.",
+            "columns": 3,
+            "items": [
+              { "icon": "🌐", "title": ".tz Domains", "text": "Promote local identity with .co.tz, .or.tz, .ac.tz, and other Tanzanian extensions." },
+              { "icon": "🖥", "title": "Hosting Automation", "text": "Sell hosting packages that connect naturally to cPanel, WHM, and future control panels." },
+              { "icon": "💳", "title": "Local Payments", "text": "Present M-Pesa, bank deposit, cash, and online payment options with confidence." }
+            ]
+          },
+          "styles": { "padding": "64px 0", "background": "#ffffff" }
+        },
+        {
+          "type": "pricing-table",
+          "data": {
+            "eyebrow": "Hosting Packages",
+            "heading": "Plans for every stage",
+            "subheading": "Use JamVini service products to replace these placeholders with real package pricing.",
+            "showToggle": true
+          },
+          "styles": { "padding": "72px 0", "background": "#f8fafc" }
+        },
+        {
+          "type": "features",
+          "data": {
+            "title": "Built for repeated support work",
+            "columns": 4,
+            "items": [
+              { "title": "Client Portal", "text": "Clients can see services, invoices, domains, and tickets." },
+              { "title": "SSL Ready", "text": "Perfect for managed websites, email, and secure hosting." },
+              { "title": "Billing Flow", "text": "Invoices, orders, and payments stay connected." },
+              { "title": "East Africa Ready", "text": "Designed for local currencies, providers, and customer expectations." }
+            ]
+          },
+          "styles": { "padding": "64px 0", "background": "#ffffff" }
+        },
+        {
+          "type": "cta",
+          "data": {
+            "heading": "Ready to bring your clients into JamVini?",
+            "text": "Start with a hosting package, register a domain, or talk to our team about migration.",
+            "buttonText": "Get Started",
+            "buttonLink": "/contact",
+            "bgColor": "#1a5276",
+            "buttonStyle": "light"
+          },
+          "styles": { "padding": "72px 0", "background": "#1a5276" }
+        }
+      ]
+    },
+    {
+      "title": "Services",
+      "slug": "services",
+      "excerpt": "Hosting, domains, email, SSL, and managed website services.",
+      "status": "published",
+      "template": "default",
+      "blocks": [
+        {
+          "type": "page-hero",
+          "data": {
+            "title": "Services",
+            "subtitle": "Everything your customers need to launch, protect, and grow online.",
+            "align": "center",
+            "bgColor": "#0f172a",
+            "textColor": "#ffffff"
+          },
+          "styles": { "padding": "0", "background": "#0f172a" }
+        },
+        {
+          "type": "features",
+          "data": {
+            "title": "What we provide",
+            "columns": 3,
+            "items": [
+              { "icon": "🖥", "title": "Shared Hosting", "text": "Reliable SSD hosting packages for websites, email, and small business apps." },
+              { "icon": "🌐", "title": "Domain Registration", "text": "Search, register, renew, and manage local and global domain names." },
+              { "icon": "🔒", "title": "SSL Certificates", "text": "Keep websites trusted with HTTPS and renewal reminders." },
+              { "icon": "📧", "title": "Business Email", "text": "Professional email accounts for teams and departments." },
+              { "icon": "🛠", "title": "Website Care", "text": "Maintenance, updates, backups, and technical support." },
+              { "icon": "🚀", "title": "Migration Help", "text": "Move existing websites, domains, and emails into your platform." }
+            ]
+          },
+          "styles": { "padding": "64px 0", "background": "#ffffff" }
+        },
+        {
+          "type": "cta",
+          "data": {
+            "heading": "Need a custom package?",
+            "text": "Tell us what you want to host and we will recommend the right plan.",
+            "buttonText": "Contact Support",
+            "buttonLink": "/contact",
+            "bgColor": "#2e86c1",
+            "buttonStyle": "light"
+          },
+          "styles": { "padding": "64px 0", "background": "#2e86c1" }
+        }
+      ]
+    },
+    {
+      "title": "Pricing",
+      "slug": "pricing",
+      "excerpt": "Simple hosting packages with room to grow.",
+      "status": "published",
+      "template": "default",
+      "blocks": [
+        {
+          "type": "page-hero",
+          "data": {
+            "title": "Pricing",
+            "subtitle": "Choose a package today and upgrade as your website grows.",
+            "align": "center",
+            "bgColor": "#1a5276",
+            "textColor": "#ffffff"
+          },
+          "styles": { "padding": "0", "background": "#1a5276" }
+        },
+        {
+          "type": "pricing-table",
+          "data": {
+            "heading": "Hosting plans",
+            "subheading": "These cards can be powered by your JamVini service catalog.",
+            "showToggle": true
+          },
+          "styles": { "padding": "72px 0", "background": "#f8fafc" }
+        },
+        {
+          "type": "features",
+          "data": {
+            "title": "Included with every plan",
+            "columns": 3,
+            "items": [
+              { "title": "Free SSL Support", "text": "Secure websites with certificates and clear renewal handling." },
+              { "title": "Daily Backups", "text": "Protect customer work with recoverable hosting data." },
+              { "title": "Local Support", "text": "Support customers in the language and channels they trust." }
+            ]
+          },
+          "styles": { "padding": "56px 0", "background": "#ffffff" }
+        }
+      ]
+    },
+    {
+      "title": "About",
+      "slug": "about",
+      "excerpt": "A hosting company built around reliability, clarity, and local trust.",
+      "status": "published",
+      "template": "default",
+      "blocks": [
+        {
+          "type": "page-hero",
+          "data": {
+            "title": "About Us",
+            "subtitle": "We help businesses stay online with hosting, domains, billing, and support that feel simple.",
+            "align": "center",
+            "bgColor": "#0f172a",
+            "textColor": "#ffffff"
+          },
+          "styles": { "padding": "0", "background": "#0f172a" }
+        },
+        {
+          "type": "features",
+          "data": {
+            "title": "How we work",
+            "columns": 3,
+            "items": [
+              { "title": "Clear Communication", "text": "Clients should always understand what they are paying for and when renewals are due." },
+              { "title": "Reliable Operations", "text": "Hosting support works best when billing, orders, tickets, and services are connected." },
+              { "title": "Local Context", "text": "East African providers need practical tools for local payments, domains, and customer support." }
+            ]
+          },
+          "styles": { "padding": "64px 0", "background": "#ffffff" }
+        },
+        {
+          "type": "cta",
+          "data": {
+            "heading": "Let us manage the technical details",
+            "text": "You focus on your business while we keep your website, domains, and hosting organized.",
+            "buttonText": "Start a Conversation",
+            "buttonLink": "/contact",
+            "bgColor": "#f39c12",
+            "buttonStyle": "dark"
+          },
+          "styles": { "padding": "64px 0", "background": "#f39c12" }
+        }
+      ]
+    },
+    {
+      "title": "Contact",
+      "slug": "contact",
+      "excerpt": "Talk to our support and sales team.",
+      "content": "<p>Use this page for your phone number, WhatsApp, office location, support hours, and a contact form shortcode.</p><p><strong>Phone:</strong> +255 000 000 000<br><strong>Email:</strong> support@example.co.tz<br><strong>Hours:</strong> Monday to Friday, 09:00-17:00</p><p>[form slug=\"contact\"]</p>",
+      "status": "published",
+      "template": "default"
+    }
+  ],
+  "menus": [
+    {
+      "name": "Primary Menu",
+      "slug": "primary-menu",
+      "location": "primary",
+      "items": [
+        { "label": "Home", "url": "/" },
+        { "label": "Services", "url": "/services" },
+        { "label": "Pricing", "url": "/pricing" },
+        { "label": "About", "url": "/about" },
+        { "label": "Contact", "url": "/contact" }
+      ]
+    }
+  ]
+}

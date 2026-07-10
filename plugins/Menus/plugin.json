@@ -1,0 +1,23 @@
+{
+    "name": "Menus",
+    "slug": "menus",
+    "version": "1.0.0",
+    "description": "Manage public website navigation menus and theme menu locations",
+    "author": "JamVini",
+    "type": "module",
+    "core": true,
+    "dependencies": ["cms"],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "compass",
+            "label": "Menus",
+            "route": "admin.menus.index",
+            "position": 18,
+            "section": "catalog"
+        }
+    },
+    "permissions": ["manage_menus"],
+    "hooks_provides": [],
+    "hooks_listens": []
+}

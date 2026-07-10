@@ -1,0 +1,23 @@
+{
+    "name": "Banner Studio",
+    "slug": "banner-studio",
+    "version": "1.0.0",
+    "description": "Design responsive hero banners with draggable layers and embed them using shortcodes.",
+    "author": "JamVini",
+    "type": "module",
+    "core": true,
+    "dependencies": [],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "panel-top",
+            "label": "Banner Studio",
+            "route": "admin.banner-studio.index",
+            "position": 58,
+            "section": "catalog"
+        }
+    },
+    "permissions": ["banner-studio.read", "banner-studio.write", "banner-studio.manage"],
+    "hooks_provides": ["banner_studio.saved"],
+    "hooks_listens": ["shortcode.banner"]
+}

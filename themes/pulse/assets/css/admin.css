@@ -1,0 +1,161 @@
+/* Pulse Theme - Admin Panel Styles */
+:root {
+    --pulse-admin-primary: #0f172a;
+    --pulse-admin-secondary: #1e293b;
+    --pulse-admin-accent: #3b82f6;
+    --pulse-admin-bg: #f1f5f9;
+    --pulse-admin-card: #ffffff;
+    --pulse-admin-text: #1e293b;
+}
+
+.pulse-admin-sidebar {
+    background: var(--pulse-admin-primary);
+    color: white;
+    width: 280px;
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+.pulse-admin-sidebar .logo {
+    padding: 24px;
+    font-size: 24px;
+    font-weight: 800;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pulse-admin-sidebar nav {
+    padding: 16px 0;
+}
+
+.pulse-admin-sidebar nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 24px;
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.2s;
+}
+
+.pulse-admin-sidebar nav a:hover,
+.pulse-admin-sidebar nav a.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.pulse-admin-sidebar nav a.active {
+    border-right: 3px solid var(--pulse-admin-accent);
+}
+
+.pulse-admin-main {
+    flex: 1;
+    padding: 24px;
+    background: var(--pulse-admin-bg);
+}
+
+.pulse-admin-header {
+    background: white;
+    padding: 16px 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    margin-bottom: 24px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pulse-admin-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.pulse-admin-actions a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Stats Widgets */
+.pulse-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.pulse-stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.pulse-stat-card .stat-number {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--pulse-admin-text);
+}
+
+.pulse-stat-card .stat-label {
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* Tables */
+.pulse-table-container {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.pulse-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.pulse-table th {
+    background: #f8fafc;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    color: #1e293b;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.pulse-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.pulse-table tr:hover td {
+    background: #f8fafc;
+}
+
+/* Forms */
+.pulse-form-group {
+    margin-bottom: 16px;
+}
+
+.pulse-form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: #1e293b;
+}
+
+.pulse-form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    transition: border-color 0.2s;
+}
+
+.pulse-form-control:focus {
+    outline: none;
+    border-color: var(--pulse-admin-accent);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}

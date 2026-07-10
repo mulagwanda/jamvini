@@ -1,0 +1,23 @@
+{
+    "name": "Orders",
+    "slug": "orders",
+    "version": "1.0.0",
+    "description": "Order management — create orders, accept, and auto-generate invoices",
+    "author": "JamVini",
+    "type": "module",
+    "core": true,
+    "dependencies": ["clients", "services", "invoices"],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "shopping-cart",
+            "label": "Orders",
+            "route": "admin.orders.index",
+            "position": 8,
+            "section": "main"
+        }
+    },
+    "permissions": ["manage_orders"],
+    "hooks_provides": ["order.created", "order.accepted", "order.rejected", "order.completed"],
+    "hooks_listens": ["invoice.paid"]
+}

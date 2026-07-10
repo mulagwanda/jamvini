@@ -1,0 +1,28 @@
+{
+    "name": "Security Shield",
+    "slug": "security",
+    "version": "1.0.0",
+    "description": "Firewall, brute-force protection, IP rules, audit logs, and file integrity scanning.",
+    "author": "JamVini",
+    "type": "module",
+    "core": false,
+    "dependencies": [],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "shield-check",
+            "label": "Security",
+            "route": "admin.security.index",
+            "position": 89,
+            "section": "system"
+        }
+    },
+    "permissions": ["manage_security"],
+    "middleware": {
+        "global": [
+            "Plugins\\Security\\src\\Middleware\\SecurityFirewallMiddleware"
+        ]
+    },
+    "hooks_provides": ["security.threat_detected", "security.ip_blocked", "security.scan_completed"],
+    "hooks_listens": ["client.created", "invoice.paid", "support.ticket_created"]
+}

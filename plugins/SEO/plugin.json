@@ -1,0 +1,23 @@
+{
+    "name": "SEO Toolkit",
+    "slug": "seo",
+    "version": "1.1.0",
+    "description": "Industrial SEO toolkit with meta management, sitemap, robots, schema, content checks, analytics, and visitor reports.",
+    "author": "JamVini",
+    "type": "module",
+    "core": false,
+    "dependencies": [],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "search",
+            "label": "SEO",
+            "route": "admin.seo.index",
+            "position": 55,
+            "section": "catalog"
+        }
+    },
+    "permissions": ["manage_seo"],
+    "hooks_provides": ["seo.head_tags", "seo.analytics_tracked", "seo.content_audited"],
+    "hooks_listens": ["cms.page_created", "cms.post_published"]
+}

@@ -1,0 +1,23 @@
+{
+    "name": "Slider",
+    "slug": "slider",
+    "version": "1.0.0",
+    "description": "Create beautiful hero sliders, carousels, and testimonial sliders",
+    "author": "JamVini",
+    "type": "module",
+    "core": false,
+    "dependencies": [],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "gallery-horizontal",
+            "label": "Sliders",
+            "route": "admin.slider.index",
+            "position": 57,
+            "section": "catalog"
+        }
+    },
+    "permissions": ["manage_sliders"],
+    "hooks_provides": ["slider.render"],
+    "hooks_listens": []
+}

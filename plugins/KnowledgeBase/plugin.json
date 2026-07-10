@@ -1,0 +1,22 @@
+{
+    "name": "Knowledge Base",
+    "slug": "knowledge-base",
+    "version": "1.0.0",
+    "description": "FAQ and help articles for clients",
+    "author": "JamVini",
+    "type": "module",
+    "core": false,
+    "dependencies": [],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "book-open",
+            "label": "Knowledge Base",
+            "route": "admin.kb.index",
+            "position": 50,
+            "section": "catalog"
+        }
+    },
+    "permissions": ["manage_kb"],
+    "hooks_listens": []
+}

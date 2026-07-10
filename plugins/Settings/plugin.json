@@ -1,0 +1,31 @@
+{
+    "name": "Settings",
+    "slug": "settings",
+    "version": "1.0.0",
+    "description": "Company profile, billing preferences, and system configuration",
+    "author": "JamVini",
+    "type": "module",
+    "core": true,
+    "dependencies": [],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "settings",
+            "label": "Settings",
+            "route": "admin.settings.index",
+            "position": 90,
+            "section": "system",
+            "children": [
+                {"label": "General", "route": "admin.settings.index"},
+                {"label": "Site", "route": "admin.settings.site"},
+                {"label": "Billing & Tax", "route": "admin.settings.billing"},
+                {"label": "Invoice", "route": "admin.settings.invoice"},
+                {"label": "Domain", "route": "admin.settings.domain"},
+                {"label": "Notifications", "route": "admin.settings.notifications"}
+            ]
+        }
+    },
+    "permissions": ["manage_settings"],
+    "hooks_provides": [],
+    "hooks_listens": []
+}

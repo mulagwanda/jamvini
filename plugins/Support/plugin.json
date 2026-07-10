@@ -1,0 +1,27 @@
+{
+    "name": "Support",
+    "slug": "support",
+    "version": "1.0.0",
+    "description": "Announcements and ticket support for clients",
+    "author": "JamVini",
+    "type": "module",
+    "core": true,
+    "dependencies": ["clients", "client-portal"],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "headphones",
+            "label": "Support",
+            "route": "admin.support.index",
+            "position": 18,
+            "section": "main",
+            "children": [
+                {"label": "Tickets", "route": "admin.support.tickets.index"},
+                {"label": "Announcements", "route": "admin.support.announcements.index"}
+            ]
+        }
+    },
+    "permissions": ["manage_support"],
+    "hooks_provides": ["support.ticket_created", "support.ticket_replied", "support.announcement_published"],
+    "hooks_listens": []
+}

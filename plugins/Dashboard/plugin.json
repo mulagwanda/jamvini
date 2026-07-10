@@ -1,0 +1,21 @@
+{
+    "name": "Admin Dashboard",
+    "slug": "dashboard",
+    "version": "1.0.0",
+    "description": "Admin dashboard with business overview and stats",
+    "author": "JamVini",
+    "type": "module",
+    "core": true,
+    "dependencies": ["clients"],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "layout-dashboard",
+            "label": "Dashboard",
+            "route": "admin.dashboard",
+            "position": 1,
+            "section": "main"
+        }
+    },
+    "hooks_listens": ["dashboard.widgets"]
+}

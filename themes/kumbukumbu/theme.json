@@ -1,0 +1,67 @@
+{
+    "name": "Kumbukumbu",
+    "slug": "kumbukumbu",
+    "version": "1.0.0",
+    "author": "JamVini",
+    "description": "A public-site theme created as a lasting memory of building JamVini together.",
+    "screenshot": "screenshot.png",
+    "supports": [
+        "public-site"
+    ],
+    "requires": {
+        "plugins": ["cms", "menus"]
+    },
+    "suggests": {
+        "plugins": ["services", "ordering", "ai-assistant"]
+    },
+    "settings": {
+        "primary_color": {
+            "type": "color",
+            "label": "Primary Color",
+            "default": "#2563EB",
+            "description": "Main accent color for links and buttons"
+        },
+        "primary_color_hover": {
+            "type": "color",
+            "label": "Primary Hover Color",
+            "default": "#1D4ED8",
+            "description": "Darker accent for hover states"
+        },
+        "show_logo": {
+            "type": "boolean",
+            "label": "Show Logo in Header",
+            "default": true
+        },
+        "logo_url": {
+            "type": "image",
+            "label": "Custom Logo",
+            "default": "",
+            "description": "Upload your public website logo"
+        },
+        "favicon_url": {
+            "type": "image",
+            "label": "Favicon",
+            "default": ""
+        },
+        "footer_text": {
+            "type": "text",
+            "label": "Footer Text",
+            "default": "Built with JamVini. Remember the work. Keep building."
+        },
+        "show_powered_by": {
+            "type": "boolean",
+            "label": "Show Powered by JamVini",
+            "default": true
+        },
+        "homepage_hero_title": {
+            "type": "text",
+            "label": "Homepage Hero Title",
+            "default": "Hosting built with memory, care, and momentum."
+        },
+        "homepage_hero_subtitle": {
+            "type": "textarea",
+            "label": "Homepage Hero Subtitle",
+            "default": "Kumbukumbu is a clean public theme for hosting companies that want trust, clarity, and a little soul in the first impression."
+        }
+    }
+}

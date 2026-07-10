@@ -1,0 +1,124 @@
+{
+    "name": "Tanzanite",
+    "slug": "default",
+    "version": "1.0.0",
+    "author": "JamVini",
+    "description": "JamVini's built-in theme inspired by Tanzanite colors.",
+    "screenshot": "screenshot.png",
+    "requires": {
+        "plugins": ["Dashboard"]
+    },
+    "menu": {
+    "admin": {
+        "icon": "🎨",
+        "label": "Theme Options",
+        "route": "admin.theme.index",
+        "position": 91,
+        "section": "system"
+    }
+},
+    "supports": [
+        "public-site",
+        "admin-panel",
+        "client-portal",
+        "auth-pages"
+    ],
+    "settings": {
+        "primary_color": {
+            "type": "color",
+            "label": "Primary Color",
+            "default": "#6C5CE7",
+            "description": "Main brand color for buttons, links, and accents"
+        },
+        "primary_color_hover": {
+            "type": "color",
+            "label": "Primary Hover Color",
+            "default": "#5A4BD1",
+            "description": "Darker shade for hover states"
+        },
+        "show_logo": {
+            "type": "boolean",
+            "label": "Show Logo in Header",
+            "default": true
+        },
+        "logo_url": {
+            "type": "image",
+            "label": "Custom Logo",
+            "default": "",
+            "description": "Upload your company logo (200x60px recommended)"
+        },
+        "favicon_url": {
+            "type": "image",
+            "label": "Favicon",
+            "default": "",
+            "description": "Browser tab icon (32x32px)"
+        },
+        "sidebar_width": {
+            "type": "select",
+            "label": "Sidebar Width",
+            "default": "260px",
+            "options": [
+                {"value": "240px", "label": "Compact (240px)"},
+                {"value": "260px", "label": "Normal (260px)"},
+                {"value": "300px", "label": "Wide (300px)"}
+            ]
+        },
+        "font_heading": {
+            "type": "select",
+            "label": "Heading Font",
+            "default": "Poppins",
+            "options": [
+                {"value": "Poppins", "label": "Poppins"},
+                {"value": "Inter", "label": "Inter"},
+                {"value": "Montserrat", "label": "Montserrat"},
+                {"value": "Open Sans", "label": "Open Sans"}
+            ]
+        },
+        "font_body": {
+            "type": "select",
+            "label": "Body Font",
+            "default": "Inter",
+            "options": [
+                {"value": "Inter", "label": "Inter"},
+                {"value": "Poppins", "label": "Poppins"},
+                {"value": "Roboto", "label": "Roboto"},
+                {"value": "Open Sans", "label": "Open Sans"}
+            ]
+        },
+        "footer_text": {
+            "type": "text",
+            "label": "Footer Text",
+            "default": "© 2026 Your Company. All rights reserved."
+        },
+        "show_powered_by": {
+            "type": "boolean",
+            "label": "Show Powered by JamVini",
+            "default": true
+        },
+        "homepage_hero_title": {
+            "type": "text",
+            "label": "Homepage Hero Title",
+            "default": "Manage Your Hosting Business With Ease"
+        },
+        "homepage_hero_subtitle": {
+            "type": "textarea",
+            "label": "Homepage Hero Subtitle",
+            "default": "The complete management platform for Tanzanian web hosting companies."
+        },
+        "homepage_show_pricing": {
+            "type": "boolean",
+            "label": "Show Pricing Section",
+            "default": true
+        },
+        "homepage_show_features": {
+            "type": "boolean",
+            "label": "Show Features Section",
+            "default": true
+        },
+        "homepage_show_testimonials": {
+            "type": "boolean",
+            "label": "Show Testimonials",
+            "default": false
+        }
+    }
+}

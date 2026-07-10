@@ -1,0 +1,25 @@
+{
+    "name": "Contact Forms",
+    "slug": "forms",
+    "version": "1.0.0",
+    "description": "Drag-drop form builder with submissions and shortcode support",
+    "author": "JamVini",
+    "type": "module",
+    "core": false,
+    "dependencies": [],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "clipboard-list",
+            "label": "Forms",
+            "route": "admin.forms.index",
+            "position": 56,
+            "section": "catalog",
+            "children": [
+                {"label": "All Forms", "route": "admin.forms.index"},
+                {"label": "Add New", "route": "admin.forms.create"}
+            ]
+        }
+    },
+    "permissions": ["manage_forms"]
+}

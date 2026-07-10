@@ -1,0 +1,343 @@
+{
+    "name": "Pulse PRO",
+    "slug": "pulse",
+    "version": "2.0.0",
+    "author": "JamVini",
+    "description": "Premium commercial theme for JamVini hosting companies in East Africa. Includes public, client, and admin styling with demo content and enterprise theme options.",
+    "screenshot": "screenshot.png",
+    "premium": true,
+    "commercial": true,
+    "price": "TZS 180,000",
+    "license": "paid",
+    "builder": {
+        "recommended": "jv-builder",
+        "mode": "compatible",
+        "description": "Pulse is compatible with JV Builder content and shortcodes. Theme options only control the surrounding skin, not builder block data."
+    },
+    "supports": [
+        "admin-panel",
+        "client-portal",
+        "public-site",
+        "public-website",
+        "multi-language",
+        "dark-mode",
+        "responsive",
+        "rtl",
+        "widgets",
+        "theme-options",
+        "demo-import",
+        "builder-compatible",
+        "seo-optimized",
+        "accessibility-ready",
+        "performance-optimized",
+        "mobile-first"
+    ],
+    "demo_data": [
+        {
+            "slug": "default",
+            "name": "Pulse Hosting Starter",
+            "description": "Imports starter pages, primary navigation, homepage assignment, and Pulse theme settings."
+        },
+        {
+            "slug": "agency",
+            "name": "Pulse Agency Pro",
+            "description": "Premium agency layout with portfolio, case studies, and advanced pricing tables."
+        },
+        {
+            "slug": "hosting",
+            "name": "Pulse Hosting Plus",
+            "description": "Dedicated hosting provider layout with domain search, featured packages, and testimonials."
+        }
+    ],
+    "requires": {
+        "core_version": ">=1.0.0",
+        "plugins": [
+            "cms",
+            "menus",
+            "forms",
+            "seo",
+            "jv-builder",
+            "slider",
+            "media"
+        ]
+    },
+    "settings": {
+        "_meta": {
+            "group_order": ["General", "Layout", "Colors", "Fonts", "Branding", "Header", "Footer", "Navigation", "Performance", "Advanced"]
+        },
+        "site_width": {
+            "type": "select",
+            "group": "General",
+            "label": "Site Width",
+            "default": "wide",
+            "description": "Controls the outer website canvas. Builder sections keep their own block widths.",
+            "options": [
+                { "value": "wide", "label": "Wide (Full Width)" },
+                { "value": "boxed", "label": "Boxed (Centered)" }
+            ]
+        },
+        "container_width": {
+            "type": "select",
+            "group": "Layout",
+            "label": "Container Width",
+            "default": "1180px",
+            "options": [
+                { "value": "1080px", "label": "Compact (1080px)" },
+                { "value": "1180px", "label": "Standard (1180px)" },
+                { "value": "1320px", "label": "Large (1320px)" },
+                { "value": "1440px", "label": "Extra Large (1440px)" }
+            ]
+        },
+        "header_style": {
+            "type": "select",
+            "group": "Header",
+            "label": "Header Style",
+            "default": "sticky",
+            "options": [
+                { "value": "static", "label": "Static" },
+                { "value": "sticky", "label": "Sticky (Floating)" },
+                { "value": "transparent", "label": "Transparent (Overlay)" }
+            ]
+        },
+        "header_layout": {
+            "type": "select",
+            "group": "Header",
+            "label": "Header Layout",
+            "default": "standard",
+            "options": [
+                { "value": "standard", "label": "Standard (Logo Left)" },
+                { "value": "centered", "label": "Centered (Logo Center)" },
+                { "value": "compact", "label": "Compact (Minimal)" }
+            ]
+        },
+        "footer_style": {
+            "type": "select",
+            "group": "Footer",
+            "label": "Footer Style",
+            "default": "modern",
+            "options": [
+                { "value": "modern", "label": "Modern (Multi-Column)" },
+                { "value": "compact", "label": "Compact (Minimal)" },
+                { "value": "dark", "label": "Dark (Premium)" }
+            ]
+        },
+        "primary_color": {
+            "type": "color",
+            "group": "Colors",
+            "label": "Primary Color",
+            "default": "#0f172a",
+            "description": "Main brand color used for headers, buttons, and prominent elements."
+        },
+        "secondary_color": {
+            "type": "color",
+            "group": "Colors",
+            "label": "Secondary Color",
+            "default": "#2563eb",
+            "description": "Accent color for buttons, links, and interactive elements."
+        },
+        "accent_color": {
+            "type": "color",
+            "group": "Colors",
+            "label": "Accent Color",
+            "default": "#d97706",
+            "description": "Highlight color for featured items, badges, and special elements."
+        },
+        "text_color": {
+            "type": "color",
+            "group": "Colors",
+            "label": "Text Color",
+            "default": "#0f172a",
+            "description": "Primary text color for body content."
+        },
+        "text_color_secondary": {
+            "type": "color",
+            "group": "Colors",
+            "label": "Secondary Text Color",
+            "default": "#475569",
+            "description": "Muted text color for descriptions and meta information."
+        },
+        "background_color": {
+            "type": "color",
+            "group": "Colors",
+            "label": "Background Color",
+            "default": "#f8fafc",
+            "description": "Main page background color."
+        },
+        "dark_mode": {
+            "type": "boolean",
+            "group": "Colors",
+            "label": "Enable Dark Mode",
+            "default": false,
+            "description": "Toggle dark mode for the entire theme. Users can override this setting."
+        },
+        "dark_mode_toggle": {
+            "type": "boolean",
+            "group": "Colors",
+            "label": "Show Dark Mode Toggle",
+            "default": true,
+            "description": "Display a dark mode toggle switch in the header for users."
+        },
+        "heading_font": {
+            "type": "select",
+            "group": "Fonts",
+            "label": "Heading Font",
+            "default": "Inter, sans-serif",
+            "options": [
+                { "value": "Inter, sans-serif", "label": "Inter" },
+                { "value": "Poppins, sans-serif", "label": "Poppins" },
+                { "value": "Montserrat, sans-serif", "label": "Montserrat" },
+                { "value": "system-ui, sans-serif", "label": "System UI" }
+            ]
+        },
+        "body_font": {
+            "type": "select",
+            "group": "Fonts",
+            "label": "Body Font",
+            "default": "Inter, sans-serif",
+            "options": [
+                { "value": "Inter, sans-serif", "label": "Inter" },
+                { "value": "Poppins, sans-serif", "label": "Poppins" },
+                { "value": "Roboto, sans-serif", "label": "Roboto" },
+                { "value": "system-ui, sans-serif", "label": "System UI" }
+            ]
+        },
+        "logo_url": {
+            "type": "image",
+            "group": "Branding",
+            "label": "Header Logo",
+            "default": "",
+            "description": "Recommended transparent PNG/SVG-style mark, 220x64px."
+        },
+        "logo_alt_url": {
+            "type": "image",
+            "group": "Branding",
+            "label": "Alternative Logo (Dark Mode)",
+            "default": "",
+            "description": "Optional alternative logo for dark mode. If not set, the primary logo will be used."
+        },
+        "footer_logo_url": {
+            "type": "image",
+            "group": "Branding",
+            "label": "Footer Logo",
+            "default": "",
+            "description": "Optional alternate logo for the footer."
+        },
+        "favicon_url": {
+            "type": "image",
+            "group": "Branding",
+            "label": "Favicon",
+            "default": "",
+            "description": "Browser icon, 32x32px or 64x64px."
+        },
+        "brand_name": {
+            "type": "text",
+            "group": "Branding",
+            "label": "Brand Name",
+            "default": "JamVini Pulse"
+        },
+        "company_name": {
+            "type": "text",
+            "group": "Branding",
+            "label": "Company Name",
+            "default": "JamVini Hosting",
+            "description": "Used in copyright notices and meta tags."
+        },
+        "footer_tagline": {
+            "type": "textarea",
+            "group": "Footer",
+            "label": "Footer Tagline",
+            "default": "The heartbeat of your hosting business.",
+            "description": "Brief description displayed in the footer."
+        },
+        "copyright_text": {
+            "type": "text",
+            "group": "Footer",
+            "label": "Copyright Text",
+            "default": "© 2026 JamVini Hosting. All rights reserved.",
+            "description": "Copyright notice displayed in the footer."
+        },
+        "footer_columns": {
+            "type": "select",
+            "group": "Footer",
+            "label": "Footer Columns",
+            "default": "4",
+            "options": [
+                { "value": "2", "label": "2 Columns" },
+                { "value": "3", "label": "3 Columns" },
+                { "value": "4", "label": "4 Columns" }
+            ],
+            "description": "Number of columns in the modern footer layout."
+        },
+        "social_links": {
+            "type": "textarea",
+            "group": "Footer",
+            "label": "Social Links JSON",
+            "default": "[{\"label\":\"Twitter\",\"url\":\"https://twitter.com/jamvini\",\"icon\":\"🐦\"},{\"label\":\"Facebook\",\"url\":\"https://facebook.com/jamvini\",\"icon\":\"📘\"}]",
+            "description": "JSON array of social links. Example: [{\"label\":\"Twitter\",\"url\":\"https://twitter.com/jamvini\",\"icon\":\"🐦\"}]"
+        },
+        "custom_nav_links": {
+            "type": "textarea",
+            "group": "Navigation",
+            "label": "Extra Navigation Links JSON",
+            "default": "[]",
+            "description": "Optional JSON array, for example [{\"label\":\"Status\",\"url\":\"/status\"}]. Primary menu items still come from Menus."
+        },
+        "footer_links": {
+            "type": "textarea",
+            "group": "Footer",
+            "label": "Footer Links JSON",
+            "default": "[{\"label\":\"Services\",\"url\":\"/services\"},{\"label\":\"Pricing\",\"url\":\"/pricing\"},{\"label\":\"Contact\",\"url\":\"/contact\"}]",
+            "description": "JSON array of footer links. Example: [{\"label\":\"Services\",\"url\":\"/services\"}]"
+        },
+        "enable_animations": {
+            "type": "boolean",
+            "group": "Performance",
+            "label": "Enable Animations",
+            "default": true,
+            "description": "Disable to improve performance on slower devices."
+        },
+        "lazy_load_images": {
+            "type": "boolean",
+            "group": "Performance",
+            "label": "Lazy Load Images",
+            "default": true,
+            "description": "Enable native lazy loading for all images."
+        },
+        "custom_css": {
+            "type": "code",
+            "group": "Advanced",
+            "label": "Custom CSS",
+            "default": "",
+            "description": "Injected after Pulse CSS. This affects the theme skin only; JV Builder block data and shortcode output remain untouched."
+        },
+        "custom_js": {
+            "type": "code",
+            "group": "Advanced",
+            "label": "Custom JavaScript",
+            "default": "",
+            "description": "Injected before the closing body tag. Use for tracking codes and custom functionality."
+        },
+        "google_analytics_id": {
+            "type": "text",
+            "group": "Advanced",
+            "label": "Google Analytics ID",
+            "default": "",
+            "description": "Enter your GA4 measurement ID (G-XXXXXXXXXX). The tracking code will be automatically added."
+        }
+    },
+    "menu": {
+        "admin": {
+            "icon": "💜",
+            "label": "Pulse Theme",
+            "route": "admin.themes.options",
+            "route_params": ["pulse"],
+            "position": 100,
+            "section": "system"
+        }
+    },
+    "permissions": [
+        "manage_theme_pulse",
+        "customize_theme_pulse",
+        "edit_theme_pulse_settings"
+    ]
+}

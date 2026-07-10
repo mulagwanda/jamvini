@@ -1,0 +1,29 @@
+{
+    "name": "Service Management",
+    "slug": "services",
+    "version": "1.0.0",
+    "description": "Manage hosting, domain, SSL, and custom service catalog",
+    "author": "JamVini",
+    "type": "module",
+    "core": true,
+    "dependencies": ["clients"],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "package",
+            "label": "Services",
+            "route": "admin.services.index",
+            "position": 20,
+            "section": "operations",
+            "children": [
+                {"label": "All Services", "route": "admin.services.index"},
+                {"label": "Service Groups", "route": "admin.services.groups"},
+                {"label": "Servers", "route": "admin.services.servers"},
+                {"label": "Add New Service", "route": "admin.services.create"}
+            ]
+        }
+    },
+    "permissions": ["manage_services"],
+    "hooks_provides": ["service.created", "service.updated", "service.deleted"],
+    "hooks_listens": []
+}

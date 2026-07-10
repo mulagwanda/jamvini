@@ -1,0 +1,26 @@
+{
+    "name": "JV Builder",
+    "slug": "jv-builder",
+    "version": "1.0.0",
+    "description": "Visual page builder for JamVini CMS pages.",
+    "author": "JamVini",
+    "type": "module",
+    "core": false,
+    "dependencies": ["cms"],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "wand-sparkles",
+            "label": "JV Builder",
+            "route": "admin.jv-builder.index",
+            "position": 16,
+            "section": "catalog",
+            "children": [
+                {"label": "Pages", "route": "admin.jv-builder.index"}
+            ]
+        }
+    },
+    "permissions": ["manage_builder"],
+    "hooks_provides": ["builder.page_saved"],
+    "hooks_listens": []
+}

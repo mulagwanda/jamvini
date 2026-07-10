@@ -1,0 +1,33 @@
+{
+    "name": "Social Media Centre",
+    "slug": "social-media-centre",
+    "version": "1.0.0",
+    "description": "Plan, draft, schedule, and track social media posts for hosting businesses.",
+    "author": "JamVini",
+    "type": "module",
+    "core": false,
+    "dependencies": ["media"],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "send",
+            "label": "Social Centre",
+            "route": "admin.social.index",
+            "position": 16,
+            "section": "catalog",
+            "children": [
+                {"label": "Dashboard", "route": "admin.social.index"},
+                {"label": "Calendar", "route": "admin.social.calendar"},
+                {"label": "Posts", "route": "admin.social.posts.index"},
+                {"label": "New Post", "route": "admin.social.posts.create"},
+                {"label": "Templates", "route": "admin.social.templates.index"},
+                {"label": "Campaigns", "route": "admin.social.campaigns.index"},
+                {"label": "Accounts", "route": "admin.social.accounts.index"},
+                {"label": "Settings", "route": "admin.social.settings"}
+            ]
+        }
+    },
+    "permissions": ["manage_social_media"],
+    "hooks_provides": ["social.post_created", "social.post_scheduled", "social.post_published"],
+    "hooks_listens": []
+}

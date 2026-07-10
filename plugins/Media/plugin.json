@@ -1,0 +1,23 @@
+{
+    "name": "Media Library",
+    "slug": "media",
+    "version": "1.0.0",
+    "description": "Central file and image manager used by JamVini plugins.",
+    "author": "JamVini",
+    "type": "module",
+    "core": true,
+    "dependencies": [],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "image",
+            "label": "Media Library",
+            "route": "admin.media.index",
+            "position": 14,
+            "section": "catalog"
+        }
+    },
+    "permissions": ["manage_media"],
+    "hooks_provides": ["media.uploaded", "media.deleted"],
+    "hooks_listens": []
+}

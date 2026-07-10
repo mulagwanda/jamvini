@@ -1,0 +1,53 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #0b1020; color: #e5e7eb; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+button, input, select, textarea { font: inherit; }
+.jvs-app { height: 100vh; display: grid; grid-template-columns: 86px minmax(0, 1fr) 340px; grid-template-rows: 64px minmax(0, 1fr); grid-template-areas: "top top top" "tools stage side"; }
+.jvs-topbar { grid-area: top; display: grid; grid-template-columns: 260px minmax(0, 1fr) 300px; gap: 14px; align-items: center; padding: 10px 14px; border-bottom: 1px solid #1f2937; background: #0f172a; }
+.jvs-brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.jvs-brand strong { display: block; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.jvs-brand span { display: block; color: #94a3b8; font-size: .78rem; }
+.jvs-slide-tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; }
+.jvs-slide-tabs button, .jvs-icon-btn, .jvs-primary-btn { border: 1px solid #334155; background: #111827; color: #cbd5e1; border-radius: 8px; min-height: 36px; padding: 0 12px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+.jvs-slide-tabs button.is-active, .jvs-icon-btn:hover { background: #1e293b; color: #fff; }
+.jvs-primary-btn { background: #2563eb; border-color: #2563eb; color: #fff; font-weight: 800; }
+.jvs-actions { display: flex; justify-content: flex-end; gap: 8px; }
+.jvs-tools { grid-area: tools; background: #0f172a; border-right: 1px solid #1f2937; padding: 12px 8px; display: grid; align-content: start; gap: 8px; }
+.jvs-tools button { min-height: 42px; border: 1px solid #334155; background: #111827; color: #cbd5e1; border-radius: 9px; cursor: pointer; font-size: .78rem; display:grid; place-items:center; gap:4px; padding:7px 4px; }
+.jvs-tools button span { font-size:.68rem; }
+.jvs-tools button:hover, .jvs-tools button.is-active { background: #2563eb; color: #fff; border-color: #2563eb; }
+.jvs-stage-wrap { grid-area: stage; min-width: 0; background: radial-gradient(circle at top, rgba(37,99,235,.18), transparent 38%), #111827; padding: 18px; display: grid; grid-template-rows: 38px minmax(0, 1fr); gap: 12px; }
+.jvs-stage-toolbar { display: flex; justify-content: space-between; align-items: center; color: #94a3b8; font-size: .86rem; }
+.jvs-stage-toolbar span:first-child { color: #fff; font-weight: 800; }
+.jvs-stage { width: min(100%, 1180px); aspect-ratio: 16 / 8; max-height: 100%; min-height: 420px; margin: auto; position: relative; overflow: hidden; border-radius: 16px; background: linear-gradient(135deg, #0f172a, #2563eb); background-size: cover; background-position: center center; box-shadow: 0 28px 100px rgba(0,0,0,.42); }
+.jvs-stage:before { content: ""; position: absolute; inset: 0; background: var(--jvs-overlay, rgba(15,23,42,.58)); pointer-events: none; }
+.jvs-layer { position: absolute; min-width: 44px; min-height: 28px; border: 1px solid transparent; cursor: move; display: flex; align-items: center; justify-content: flex-start; padding: 4px; color: #fff; z-index: 2; user-select: none; }
+.jvs-layer.is-selected { border-color: #38bdf8; outline: 2px solid rgba(56,189,248,.25); }
+.jvs-layer[data-type="button"] { justify-content: center; border-radius: 12px; background: #fff; color: #0f172a; font-weight: 800; }
+.jvs-layer[data-type="shape"] { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.28); }
+.jvs-layer img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; border-radius: inherit; }
+.jvs-rightbar { grid-area: side; background: #0f172a; border-left: 1px solid #1f2937; padding: 12px; display: grid; grid-template-rows: minmax(180px, .8fr) minmax(260px, 1.2fr); gap: 12px; min-height: 0; }
+.jvs-panel { border: 1px solid #1f2937; border-radius: 12px; background: #111827; overflow: hidden; min-height: 0; }
+.jvs-panel-head { height: 46px; padding: 0 14px; border-bottom: 1px solid #1f2937; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.jvs-panel-head strong { color: #fff; }
+.jvs-layer-list { padding: 10px; display: grid; gap: 8px; overflow: auto; max-height: calc(100% - 46px); }
+.jvs-layer-row { border: 1px solid #334155; border-radius: 8px; background: #0f172a; color: #cbd5e1; padding: 10px; cursor: pointer; display: flex; justify-content: space-between; gap: 8px; }
+.jvs-layer-row.is-selected { border-color: #38bdf8; color: #fff; }
+.jvs-inspector { padding: 12px; overflow: auto; max-height: calc(100% - 46px); }
+.jvs-inspector p { color: #94a3b8; line-height: 1.6; margin: 0; }
+.jvs-field-grid { display: grid; gap: 10px; padding: 14px; }
+.jvs-field-grid label, .jvs-inspector label { display: grid; gap: 6px; color: #cbd5e1; font-size: .82rem; margin-bottom: 10px; }
+.jvs-field-grid input, .jvs-field-grid select, .jvs-inspector input, .jvs-inspector select, .jvs-inspector textarea { width: 100%; border: 1px solid #334155; background: #0b1020; color: #fff; border-radius: 8px; padding: 9px 10px; }
+.jvs-inspector textarea { min-height: 74px; resize: vertical; }
+.jvs-settings-panel { display: none; position: fixed; inset: 0; z-index: 20; background: rgba(2,6,23,.72); padding: 70px 20px 20px; }
+.jvs-settings-panel.is-open { display: block; }
+.jvs-settings-card { width: min(720px, 100%); margin: 0 auto; border: 1px solid #334155; border-radius: 14px; background: #111827; overflow: hidden; box-shadow: 0 28px 90px rgba(0,0,0,.42); }
+.jvs-toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); z-index: 30; background: #16a34a; color: #fff; padding: 10px 14px; border-radius: 999px; font-weight: 800; box-shadow: 0 14px 40px rgba(0,0,0,.3); }
+.jvs-preview .jvs-tools, .jvs-preview .jvs-rightbar, .jvs-preview .jvs-stage-toolbar { display: none; }
+.jvs-preview { grid-template-columns: 0 minmax(0, 1fr) 0; }
+.jvs-preview .jvs-stage-wrap { padding: 0; grid-template-rows: minmax(0, 1fr); }
+.jvs-preview .jvs-stage { width: 100%; height: 100%; border-radius: 0; aspect-ratio: auto; }
+@media (max-width: 980px) {
+    .jvs-app { grid-template-columns: 72px minmax(0, 1fr); grid-template-areas: "top top" "tools stage"; }
+    .jvs-rightbar { display: none; }
+    .jvs-topbar { grid-template-columns: 180px minmax(0, 1fr) 210px; }
+}

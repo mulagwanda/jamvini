@@ -1,0 +1,536 @@
+.jv-ai-launcher,
+.jv-ai-panel,
+.jv-ai-panel * {
+    box-sizing: border-box;
+}
+
+.jv-ai-panel {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.jv-ai-launcher {
+    position: fixed;
+    z-index: 9990;
+    bottom: 24px;
+    min-width: 64px;
+    height: 64px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--jv-ai-color, #2563eb);
+    color: #fff;
+    box-shadow: 0 22px 54px rgba(15, 23, 42, .28);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 18px 0 12px;
+    font: 800 14px/1 Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.jv-ai-launcher:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 26px 70px rgba(15, 23, 42, .34);
+    filter: saturate(1.08);
+}
+
+.jv-ai-launcher-badge {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .18);
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, .28);
+    letter-spacing: 0;
+}
+
+.jv-ai-launcher-text {
+    white-space: nowrap;
+}
+
+.jv-ai-launcher.right,
+.jv-ai-panel.right {
+    right: 24px;
+}
+
+.jv-ai-launcher.left,
+.jv-ai-panel.left {
+    left: 24px;
+}
+
+.jv-ai-panel {
+    position: fixed;
+    z-index: 9991;
+    bottom: 104px;
+    width: min(420px, calc(100vw - 32px));
+    height: min(680px, calc(100vh - 128px));
+    background: #fff;
+    border: 1px solid rgba(148, 163, 184, .34);
+    border-radius: 22px;
+    box-shadow: 0 28px 90px rgba(15, 23, 42, .30);
+    overflow: hidden;
+    display: none;
+    grid-template-rows: auto auto 1fr auto auto;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    transform-origin: bottom right;
+}
+
+.jv-ai-panel.left {
+    transform-origin: bottom left;
+}
+
+.jv-ai-panel.open {
+    display: grid;
+    animation: jvAiEnter .18s ease-out;
+}
+
+@keyframes jvAiEnter {
+    from { opacity: 0; transform: translateY(10px) scale(.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.jv-ai-head {
+    position: relative;
+    color: #fff;
+    padding: 18px;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, .18), rgba(255, 255, 255, 0)),
+        var(--jv-ai-color, #2563eb);
+    overflow: hidden;
+}
+
+.jv-ai-head::after {
+    content: "";
+    position: absolute;
+    inset: auto -40px -70px auto;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .13);
+    pointer-events: none;
+}
+
+.jv-ai-head-row {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.jv-ai-identity {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.jv-ai-avatar {
+    width: 46px;
+    height: 46px;
+    flex: 0 0 auto;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, .18);
+    border: 1px solid rgba(255, 255, 255, .30);
+    display: grid;
+    place-items: center;
+    font-weight: 900;
+    letter-spacing: 0;
+}
+
+.jv-ai-title {
+    font-weight: 850;
+    font-size: 1rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.jv-ai-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+    font-size: .78rem;
+    opacity: .92;
+}
+
+.jv-ai-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #86efac;
+    box-shadow: 0 0 0 4px rgba(134, 239, 172, .18);
+}
+
+.jv-ai-close {
+    position: relative;
+    z-index: 1;
+    border: 0;
+    background: rgba(255, 255, 255, .16);
+    color: #fff;
+    border-radius: 12px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.jv-ai-tools {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.jv-ai-clear {
+    position: relative;
+    z-index: 1;
+    border: 0;
+    background: rgba(255, 255, 255, .16);
+    color: #fff;
+    border-radius: 12px;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 10px;
+    cursor: pointer;
+    font-size: .76rem;
+    font-weight: 850;
+}
+
+.jv-ai-intro {
+    padding: 14px 16px;
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.jv-ai-intro-text {
+    margin: 0;
+    color: #475569;
+    font-size: .88rem;
+    line-height: 1.5;
+}
+
+.jv-ai-prompts {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 10px 0 0;
+    scrollbar-width: none;
+}
+
+.jv-ai-prompts::-webkit-scrollbar {
+    display: none;
+}
+
+.jv-ai-prompt {
+    flex: 0 0 auto;
+    border: 1px solid #dbe3ef;
+    background: #f8fafc;
+    color: #334155;
+    border-radius: 999px;
+    padding: 8px 10px;
+    font-size: .78rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.jv-ai-kb {
+    margin-top: 12px;
+    display: grid;
+    gap: 8px;
+}
+
+.jv-ai-kb-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.jv-ai-kb-head strong {
+    color: #0f172a;
+    font-size: .86rem;
+}
+
+.jv-ai-kb-head span,
+.jv-ai-kb-empty {
+    color: #64748b;
+    font-size: .74rem;
+}
+
+.jv-ai-kb-list {
+    display: grid;
+    gap: 7px;
+    max-height: 150px;
+    overflow: auto;
+}
+
+.jv-ai-kb-item {
+    display: grid;
+    gap: 3px;
+    text-align: left;
+    border: 1px solid #dbe3ef;
+    border-radius: 12px;
+    background: #f8fafc;
+    padding: 9px 10px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.jv-ai-kb-item strong {
+    color: #0f172a;
+    font-size: .8rem;
+}
+
+.jv-ai-kb-item span {
+    color: #64748b;
+    font-size: .74rem;
+    line-height: 1.35;
+}
+
+.jv-ai-body {
+    padding: 16px;
+    overflow-y: auto;
+    background:
+        linear-gradient(180deg, rgba(248, 250, 252, .35), rgba(241, 245, 249, .92)),
+        #f8fafc;
+}
+
+.jv-ai-msg-row {
+    display: flex;
+    gap: 8px;
+    margin: 0 0 12px;
+}
+
+.jv-ai-msg-row.user {
+    justify-content: flex-end;
+}
+
+.jv-ai-mini-avatar {
+    width: 28px;
+    height: 28px;
+    flex: 0 0 auto;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background: #e0e7ff;
+    color: #3730a3;
+    font-size: .72rem;
+    font-weight: 900;
+}
+
+.jv-ai-mini-avatar.staff {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.jv-ai-msg {
+    max-width: 82%;
+    padding: 11px 13px;
+    border-radius: 16px;
+    font-size: .92rem;
+    line-height: 1.48;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.jv-ai-msg.assistant {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    color: #0f172a;
+    border-top-left-radius: 6px;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, .05);
+}
+
+.jv-ai-msg.staff {
+    background: #ecfdf5;
+    border: 1px solid #bbf7d0;
+    color: #14532d;
+    border-top-left-radius: 6px;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, .05);
+}
+
+.jv-ai-msg.user {
+    background: var(--jv-ai-color, #2563eb);
+    color: #fff;
+    border-top-right-radius: 6px;
+    box-shadow: 0 10px 22px rgba(37, 99, 235, .22);
+}
+
+.jv-ai-sources {
+    margin: -2px 0 12px 36px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.jv-ai-sources a,
+.jv-ai-sources span {
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+    border: 1px solid #dbe3ef;
+    border-radius: 999px;
+    background: #fff;
+    color: #475569;
+    padding: 5px 9px;
+    font-size: .74rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.jv-ai-typing {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 13px;
+}
+
+.jv-ai-typing span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #94a3b8;
+    animation: jvAiTyping 1s infinite ease-in-out;
+}
+
+.jv-ai-typing span:nth-child(2) {
+    animation-delay: .15s;
+}
+
+.jv-ai-typing span:nth-child(3) {
+    animation-delay: .3s;
+}
+
+@keyframes jvAiTyping {
+    0%, 80%, 100% { transform: translateY(0); opacity: .45; }
+    40% { transform: translateY(-3px); opacity: 1; }
+}
+
+.jv-ai-actions {
+    display: flex;
+    gap: 8px;
+    padding: 12px 14px;
+    background: #fff;
+    border-top: 1px solid #e5e7eb;
+}
+
+.jv-ai-human {
+    width: 100%;
+    border: 1px solid #d7dee8;
+    background: #fff;
+    color: #0f172a;
+    border-radius: 12px;
+    padding: 10px 12px;
+    cursor: pointer;
+    font-weight: 800;
+    transition: border-color .18s ease, background .18s ease;
+}
+
+.jv-ai-human:hover {
+    border-color: var(--jv-ai-color, #2563eb);
+    background: #f8fafc;
+}
+
+.jv-ai-form {
+    display: grid;
+    grid-template-columns: 1fr 46px;
+    gap: 9px;
+    padding: 12px;
+    border-top: 1px solid #e5e7eb;
+    background: #fff;
+}
+
+.jv-ai-input {
+    min-width: 0;
+    width: 100%;
+    border: 1px solid #cbd5e1;
+    border-radius: 14px;
+    padding: 12px 13px;
+    font-size: .92rem;
+    outline: none;
+    background: #fff;
+    color: #0f172a;
+}
+
+.jv-ai-input:focus {
+    border-color: var(--jv-ai-color, #2563eb);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, .10);
+}
+
+.jv-ai-send {
+    border: 0;
+    background: var(--jv-ai-color, #2563eb);
+    color: #fff;
+    border-radius: 14px;
+    font-weight: 900;
+    cursor: pointer;
+    min-height: 44px;
+}
+
+.jv-ai-send:disabled {
+    opacity: .62;
+    cursor: wait;
+}
+
+.jv-ai-contact {
+    display: none;
+    grid-template-columns: 1fr;
+    gap: 9px;
+    padding: 12px;
+    background: #fff;
+    border-top: 1px solid #e5e7eb;
+}
+
+.jv-ai-contact.open {
+    display: grid;
+}
+
+.jv-ai-contact-title {
+    margin: 0;
+    font-weight: 850;
+    color: #0f172a;
+    font-size: .93rem;
+}
+
+.jv-ai-contact-note {
+    margin: -3px 0 2px;
+    color: #64748b;
+    font-size: .78rem;
+    line-height: 1.4;
+}
+
+@media (max-width: 520px) {
+    .jv-ai-launcher {
+        bottom: 16px;
+        min-width: 58px;
+        height: 58px;
+        padding-right: 14px;
+    }
+
+    .jv-ai-launcher.right,
+    .jv-ai-panel.right {
+        right: 16px;
+    }
+
+    .jv-ai-launcher.left,
+    .jv-ai-panel.left {
+        left: 16px;
+    }
+
+    .jv-ai-launcher-text {
+        display: none;
+    }
+
+    .jv-ai-panel {
+        bottom: 84px;
+        width: calc(100vw - 24px);
+        height: min(660px, calc(100vh - 100px));
+        border-radius: 20px;
+    }
+}

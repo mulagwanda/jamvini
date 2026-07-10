@@ -1,0 +1,23 @@
+{
+    "name": "WHMCS Migration Tool",
+    "slug": "whmcs-migrator",
+    "version": "1.0.0",
+    "description": "Import and reconcile WHMCS clients, services, invoices, domains, and tickets.",
+    "author": "JamVini",
+    "type": "module",
+    "core": false,
+    "dependencies": ["clients", "services", "invoices", "domains"],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "database",
+            "label": "WHMCS Migrator",
+            "route": "admin.whmcs-migrator.index",
+            "position": 82,
+            "section": "system"
+        }
+    },
+    "permissions": ["manage_whmcs_migrator"],
+    "hooks_provides": ["migration.batch_created", "migration.batch_analyzed", "migration.batch_imported"],
+    "hooks_listens": []
+}

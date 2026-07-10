@@ -1,0 +1,30 @@
+{
+    "name": "SMS Notifications",
+    "slug": "sms-notifications",
+    "version": "1.0.0",
+    "description": "Send SMS alerts for invoices, domain expiry, and payment confirmations",
+    "author": "JamVini",
+    "type": "sms_provider",
+    "core": false,
+    "premium": true,
+    "price": "TZS 30,000/month",
+    "dependencies": ["clients"],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "message-circle",
+            "label": "SMS Notifications",
+            "route": "admin.sms.index",
+            "position": 61,
+            "section": "main"
+        }
+    },
+    "hooks_provides": ["sms.sent", "sms.failed"],
+    "hooks_listens": [
+        "invoice.created",
+        "invoice.paid",
+        "domain.expiring",
+        "client.created"
+    ],
+    "permissions": ["manage_sms_notifications"]
+}

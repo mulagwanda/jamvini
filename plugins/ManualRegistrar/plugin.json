@@ -1,0 +1,11 @@
+{
+    "name": "Manual Registrar",
+    "slug": "manual-registrar",
+    "version": "1.0.0",
+    "description": "Manual domain registration (no automation)",
+    "author": "JamVini",
+    "type": "domain_registrar",
+    "core": true,
+    "dependencies": [],
+    "min_core_version": "1.0.0"
+}

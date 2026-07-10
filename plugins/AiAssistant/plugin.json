@@ -1,0 +1,29 @@
+{
+    "name": "AI Assistant",
+    "slug": "ai-assistant",
+    "version": "1.0.0",
+    "description": "Optional AI chat assistant with knowledge sources and human support escalation.",
+    "author": "JamVini",
+    "type": "module",
+    "core": false,
+    "dependencies": [],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "bot",
+            "label": "AI Assistant",
+            "route": "admin.ai-assistant.index",
+            "position": 19,
+            "section": "support",
+            "children": [
+                {"label": "Overview", "route": "admin.ai-assistant.index"},
+                {"label": "Conversations", "route": "admin.ai-assistant.conversations.index"},
+                {"label": "Sources", "route": "admin.ai-assistant.sources.index"},
+                {"label": "Settings", "route": "admin.ai-assistant.settings"}
+            ]
+        }
+    },
+    "permissions": ["manage_ai_assistant"],
+    "hooks_provides": ["ai_assistant.message_received", "ai_assistant.escalated"],
+    "hooks_listens": []
+}

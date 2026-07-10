@@ -1,0 +1,84 @@
+/* Pulse Theme - Client Portal Styles */
+:root {
+    --pulse-client-header: #0f172a;
+    --pulse-client-bg: #f1f5f9;
+    --pulse-client-card: #ffffff;
+    --pulse-client-text: #1e293b;
+}
+
+.pulse-client-header {
+    background: var(--pulse-client-header);
+    padding: 16px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.pulse-client-sidebar {
+    background: var(--pulse-client-card);
+    border-right: 1px solid #e2e8f0;
+    min-height: calc(100vh - 64px);
+    padding: 24px 0;
+}
+
+.pulse-client-sidebar a {
+    display: block;
+    padding: 10px 24px;
+    color: #64748b;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.pulse-client-sidebar a:hover,
+.pulse-client-sidebar a.active {
+    background: #f1f5f9;
+    color: var(--pulse-primary);
+    border-left-color: var(--pulse-primary);
+}
+
+.pulse-client-content {
+    padding: 24px;
+    min-height: calc(100vh - 64px);
+}
+
+/* Service Cards */
+.pulse-service-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s;
+}
+
+.pulse-service-card:hover {
+    border-color: var(--pulse-primary);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* Invoice Status */
+.status-paid {
+    color: #059669;
+    background: #d1fae5;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-unpaid {
+    color: #dc2626;
+    background: #fee2e2;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-pending {
+    color: #d97706;
+    background: #fef3c7;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+}

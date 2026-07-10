@@ -1,0 +1,23 @@
+{
+    "name": "Offline Payments",
+    "slug": "offline-payments",
+    "version": "1.0.0",
+    "description": "Accept offline payments such as cash and bank deposits.",
+    "author": "JamVini",
+    "type": "payment_gateway",
+    "core": true,
+    "dependencies": ["invoices"],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "banknote",
+            "label": "Offline Payments",
+            "route": "admin.offline-payments.settings",
+            "position": 64,
+            "section": "main"
+        }
+    },
+    "permissions": ["manage_offline_payments"],
+    "hooks_provides": ["payment.offline_pending"],
+    "hooks_listens": []
+}

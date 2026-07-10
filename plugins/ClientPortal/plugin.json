@@ -1,0 +1,21 @@
+{
+    "name": "Client Portal",
+    "slug": "client-portal",
+    "version": "1.0.0",
+    "description": "Self-service portal for clients to view services, invoices, and domains",
+    "author": "JamVini",
+    "type": "module",
+    "core": true,
+    "dependencies": ["clients", "invoices", "domains", "services"],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "client": {
+            "icon": "home",
+            "label": "Dashboard",
+            "route": "client.dashboard",
+            "position": 1,
+            "section": "main"
+        }
+    },
+    "hooks_listens": []
+}

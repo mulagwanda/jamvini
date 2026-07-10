@@ -1,0 +1,26 @@
+{
+    "name": "Selcom Payment Gateway",
+    "slug": "selcom-payment",
+    "version": "1.0.0",
+    "description": "Accept payments via M-Pesa, Tigo Pesa, Airtel Money through Selcom",
+    "author": "JamVini",
+    "type": "payment_gateway",
+    "core": false,
+    "premium": true,
+    "price": "TZS 50,000",
+    "dependencies": ["invoices"],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "credit-card",
+            "label": "Selcom Payments",
+            "route": "admin.selcom.index",
+            "position": 60,
+            "section": "main"
+        }
+    },
+    "hooks_provides": ["payment.received", "payment.failed"],
+    "hooks_listens": ["invoice.paid"],
+    "settings_page": "admin.selcom.settings",
+    "permissions": ["manage_selcom_payment"]
+}

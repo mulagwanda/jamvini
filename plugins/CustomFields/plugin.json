@@ -1,0 +1,28 @@
+{
+    "name": "Custom Fields",
+    "slug": "custom-fields",
+    "version": "1.0.0",
+    "description": "Reusable custom field manager for client registration, client profiles, and future JamVini modules.",
+    "author": "JamVini",
+    "type": "module",
+    "core": true,
+    "dependencies": ["clients"],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "brackets",
+            "label": "Custom Fields",
+            "route": "admin.custom-fields.index",
+            "position": 63,
+            "section": "system"
+        }
+    },
+    "permissions": ["custom-fields.read", "custom-fields.write", "custom-fields.manage"],
+    "hooks_provides": [
+        "custom_fields.created",
+        "custom_fields.updated",
+        "custom_fields.deleted",
+        "custom_fields.values_saved"
+    ],
+    "hooks_listens": []
+}

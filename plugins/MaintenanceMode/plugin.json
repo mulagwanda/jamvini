@@ -1,0 +1,31 @@
+{
+    "name": "Maintenance Mode",
+    "slug": "maintenance-mode",
+    "version": "1.0.0",
+    "description": "Scheduled maintenance pages, IP bypass, countdowns, and service status notices.",
+    "author": "JamVini",
+    "type": "module",
+    "core": false,
+    "dependencies": [],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "construction",
+            "label": "Maintenance",
+            "route": "admin.maintenance.index",
+            "position": 88,
+            "section": "system"
+        }
+    },
+    "permissions": ["manage_maintenance"],
+    "middleware": {
+        "public": [
+            "Plugins\\MaintenanceMode\\src\\Middleware\\MaintenanceModeMiddleware"
+        ],
+        "client": [
+            "Plugins\\MaintenanceMode\\src\\Middleware\\MaintenanceModeMiddleware"
+        ]
+    },
+    "hooks_provides": ["maintenance.enabled", "maintenance.disabled"],
+    "hooks_listens": []
+}

@@ -1,0 +1,30 @@
+{
+    "name": "tzNIC FRED Registrar",
+    "slug": "tznic-registrar",
+    "version": "1.0.0",
+    "description": "Automated .tz domain lifecycle management through tzNIC/FRED EPP.",
+    "author": "JamVini",
+    "type": "domain_registrar",
+    "core": false,
+    "premium": true,
+    "price": "TZS 120,000",
+    "dependencies": ["domains"],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "globe",
+            "label": "tzNIC Registrar",
+            "route": "admin.tznic.settings",
+            "position": 63,
+            "section": "operations"
+        }
+    },
+    "permissions": ["manage_tznic_registrar"],
+    "hooks_provides": [
+        "tznic.domain_registered",
+        "tznic.domain_renewed",
+        "tznic.domain_transferred",
+        "tznic.domain_synced"
+    ],
+    "hooks_listens": ["order.completed", "domain.renewing"]
+}

@@ -1,0 +1,22 @@
+{
+    "name": "Ordering System",
+    "slug": "ordering",
+    "version": "1.0.0",
+    "description": "Domain search, cart, and checkout for your hosting services",
+    "author": "JamVini",
+    "type": "module",
+    "core": true,
+    "dependencies": ["clients", "services", "invoices", "domains"],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "client": {
+            "icon": "shopping-cart",
+            "label": "Order Services",
+            "route": "order.domains",
+            "position": 5,
+            "section": "main"
+        }
+    },
+    "hooks_provides": ["order.completed"],
+    "hooks_listens": ["invoice.paid"]
+}

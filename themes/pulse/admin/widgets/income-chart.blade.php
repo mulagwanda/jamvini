@@ -1,0 +1,1 @@
+<div class="jv-widget-kpi"><div><div class="label">Income Pulse</div><div class="value">{{ jv_format_money(\Plugins\Invoices\src\Models\Invoice::where('status', 'paid')->whereMonth('paid_at', now()->month)->sum('total')) }}</div><div class="meta">Paid this month</div></div><div class="widget-icon">{{ jv_icon('trending-up') }}</div></div>

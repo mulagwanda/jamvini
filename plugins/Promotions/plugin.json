@@ -1,0 +1,28 @@
+{
+    "name": "Promotions",
+    "slug": "promotions",
+    "version": "1.0.0",
+    "description": "Enterprise promotions, discounts, coupons, and redemption tracking for JamVini.",
+    "author": "JamVini",
+    "type": "module",
+    "core": true,
+    "dependencies": ["clients", "ordering", "orders", "invoices"],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "badge-percent",
+            "label": "Promotions",
+            "route": "admin.promotions.index",
+            "position": 42,
+            "section": "operations",
+            "children": [
+                {"label": "Promotions", "route": "admin.promotions.index"},
+                {"label": "Coupons", "route": "admin.promotions.coupons"},
+                {"label": "Create Promotion", "route": "admin.promotions.create"}
+            ]
+        }
+    },
+    "permissions": ["promotions.read", "promotions.write", "promotions.manage"],
+    "hooks_provides": ["promotion.applied", "coupon.applied", "coupon.redeemed"],
+    "hooks_listens": []
+}

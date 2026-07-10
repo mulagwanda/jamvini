@@ -1,0 +1,1075 @@
+/* ============================================================
+   PULSE PRO THEME - Frontend Styles
+   ============================================================ */
+
+/* ------------------------------------------------------------------
+   1. FONTS
+   ------------------------------------------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/* ------------------------------------------------------------------
+   2. DESIGN TOKENS (Dynamic via Theme Settings)
+   ------------------------------------------------------------------ */
+:root {
+    /* These are overridden by theme settings */
+    --pulse-primary: #1a5276;
+    --pulse-secondary: #2e86c1;
+    --pulse-accent: #f39c12;
+    --pulse-text: #1e293b;
+    --pulse-bg: #f8fafc;
+    --pulse-heading-font: 'Inter', sans-serif;
+    --pulse-body-font: 'Inter', sans-serif;
+    --pulse-container-width: 1180px;
+    
+    /* Derived colors (auto-calculated) */
+    --pulse-primary-light: color-mix(in srgb, var(--pulse-primary), white 20%);
+    --pulse-primary-dark: color-mix(in srgb, var(--pulse-primary), black 20%);
+    --pulse-secondary-light: color-mix(in srgb, var(--pulse-secondary), white 20%);
+    --pulse-secondary-dark: color-mix(in srgb, var(--pulse-secondary), black 20%);
+    --pulse-accent-light: color-mix(in srgb, var(--pulse-accent), white 20%);
+    --pulse-accent-dark: color-mix(in srgb, var(--pulse-accent), black 20%);
+    --pulse-bg-card: #ffffff;
+    --pulse-bg-secondary: color-mix(in srgb, var(--pulse-bg), black 5%);
+    --pulse-text-secondary: color-mix(in srgb, var(--pulse-text), gray 40%);
+    --pulse-text-muted: color-mix(in srgb, var(--pulse-text), gray 60%);
+    --pulse-border: color-mix(in srgb, var(--pulse-text), white 80%);
+    --pulse-border-light: color-mix(in srgb, var(--pulse-text), white 90%);
+    
+    /* Spacing */
+    --pulse-space-xs: 0.25rem;
+    --pulse-space-sm: 0.5rem;
+    --pulse-space-md: 1rem;
+    --pulse-space-lg: 1.5rem;
+    --pulse-space-xl: 2rem;
+    --pulse-space-2xl: 3rem;
+    --pulse-space-3xl: 4rem;
+    --pulse-space-4xl: 6rem;
+    
+    /* Shadows */
+    --pulse-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --pulse-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.08);
+    --pulse-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08);
+    --pulse-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08);
+    --pulse-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.08);
+    
+    /* Border Radius */
+    --pulse-radius-sm: 6px;
+    --pulse-radius: 12px;
+    --pulse-radius-lg: 16px;
+    --pulse-radius-xl: 24px;
+    
+    /* Transitions */
+    --pulse-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ------------------------------------------------------------------
+   3. BASE
+   ------------------------------------------------------------------ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--pulse-body-font);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--pulse-text);
+    background: var(--pulse-bg);
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+.pulse-brand {
+    font-family: var(--pulse-heading-font);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--pulse-text);
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
+h2 { font-size: clamp(2rem, 3.5vw, 3rem); }
+h3 { font-size: clamp(1.25rem, 1.8vw, 1.5rem); }
+h4 { font-size: 1.25rem; }
+
+p {
+    color: var(--pulse-text-secondary);
+    line-height: 1.8;
+}
+
+a {
+    color: var(--pulse-secondary);
+    text-decoration: none;
+    transition: var(--pulse-transition);
+}
+a:hover {
+    color: var(--pulse-secondary-dark);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ------------------------------------------------------------------
+   4. LAYOUT OPTIONS
+   ------------------------------------------------------------------ */
+.pulse-layout-boxed {
+    background: var(--pulse-border);
+}
+
+.pulse-layout-boxed .pulse-main,
+.pulse-layout-boxed .pulse-site-header,
+.pulse-layout-boxed .pulse-site-footer {
+    max-width: min(var(--pulse-container-width), calc(100vw - 32px));
+    background: var(--pulse-bg);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pulse-layout-boxed .pulse-site-header {
+    border-radius: 0 0 var(--pulse-radius) var(--pulse-radius);
+    padding-left: var(--pulse-space-xl);
+    padding-right: var(--pulse-space-xl);
+}
+
+.pulse-layout-boxed .pulse-site-footer {
+    border-radius: var(--pulse-radius) var(--pulse-radius) 0 0;
+}
+
+/* ------------------------------------------------------------------
+   5. DARK MODE
+   ------------------------------------------------------------------ */
+.pulse-dark {
+    --pulse-text: #e2e8f0;
+    --pulse-bg: #0f172a;
+    --pulse-bg-card: #1e293b;
+    --pulse-bg-secondary: #1a1f3a;
+    --pulse-border: #334155;
+    --pulse-border-light: #1e293b;
+    --pulse-text-secondary: #94a3b8;
+    --pulse-text-muted: #64748b;
+    --pulse-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.4);
+    --pulse-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+    --pulse-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
+    --pulse-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4);
+}
+
+.pulse-dark .pulse-site-header {
+    background: rgba(15, 23, 42, 0.85);
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+.pulse-dark .pulse-site-footer {
+    background: var(--pulse-bg-card);
+    border-top-color: var(--pulse-border);
+}
+
+.pulse-dark .pulse-card {
+    background: var(--pulse-bg-card);
+    border-color: var(--pulse-border);
+}
+
+.pulse-dark .pulse-hero {
+    background: linear-gradient(135deg, var(--pulse-primary-dark), var(--pulse-primary));
+}
+
+.pulse-dark .pulse-hero::after {
+    background: linear-gradient(to top, var(--pulse-bg), transparent);
+}
+
+/* ------------------------------------------------------------------
+   6. HEADER
+   ------------------------------------------------------------------ */
+.pulse-site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--pulse-container-width);
+    margin: 0 auto;
+    padding: 16px 24px;
+    gap: 18px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid var(--pulse-border-light);
+    transition: var(--pulse-transition);
+}
+
+/* Header Sticky */
+.pulse-header-sticky .pulse-site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.pulse-header-transparent .pulse-site-header {
+    background: transparent;
+    backdrop-filter: none;
+    border-bottom-color: transparent;
+}
+
+.pulse-header-transparent.pulse-dark .pulse-site-header {
+    background: transparent;
+}
+
+/* Brand */
+.pulse-brand {
+    font-weight: 900;
+    color: var(--pulse-primary) !important;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.pulse-brand-mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    display: inline-grid;
+    place-items: center;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--pulse-primary), var(--pulse-accent));
+    box-shadow: 0 16px 32px color-mix(in srgb, var(--pulse-primary), transparent 78%);
+}
+
+.pulse-brand img {
+    max-height: 42px;
+    width: auto;
+    display: block;
+}
+
+/* Navigation */
+.pulse-site-header nav {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.pulse-site-header nav a {
+    color: var(--pulse-text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    position: relative;
+    padding: 0.25rem 0;
+    transition: var(--pulse-transition);
+}
+
+.pulse-site-header nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--pulse-secondary);
+    transition: var(--pulse-transition);
+}
+
+.pulse-site-header nav a:hover {
+    color: var(--pulse-text);
+}
+
+.pulse-site-header nav a:hover::after {
+    width: 100%;
+}
+
+.pulse-site-header nav a.active {
+    color: var(--pulse-primary);
+    font-weight: 600;
+}
+
+.pulse-site-header nav a.active::after {
+    width: 100%;
+}
+
+/* Mobile Menu Toggle */
+.pulse-mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.pulse-mobile-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--pulse-text);
+    border-radius: 2px;
+    transition: var(--pulse-transition);
+}
+
+.pulse-mobile-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.pulse-mobile-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+.pulse-mobile-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile Navigation */
+.pulse-nav-mobile {
+    display: none;
+    flex-direction: column;
+    padding: var(--pulse-space-lg);
+    gap: var(--pulse-space-sm);
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--pulse-border);
+    box-shadow: var(--pulse-shadow-lg);
+}
+
+.pulse-nav-mobile.open {
+    display: flex;
+}
+
+.pulse-nav-mobile a {
+    padding: var(--pulse-space-sm) 0;
+    font-weight: 500;
+    color: var(--pulse-text-secondary);
+    border-bottom: 1px solid var(--pulse-border-light);
+}
+
+.pulse-nav-mobile a.active {
+    color: var(--pulse-primary);
+    font-weight: 600;
+}
+
+.pulse-nav-mobile .btn {
+    margin-top: var(--pulse-space-sm);
+}
+
+/* ------------------------------------------------------------------
+   7. MAIN
+   ------------------------------------------------------------------ */
+.pulse-main {
+    min-height: 70vh;
+}
+
+/* Container */
+.pulse-container {
+    max-width: var(--pulse-container-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.pulse-section {
+    padding: var(--pulse-space-4xl) 0;
+}
+
+.pulse-section-sm {
+    padding: var(--pulse-space-2xl) 0;
+}
+
+.pulse-section-lg {
+    padding: var(--pulse-space-4xl) 0;
+}
+
+.pulse-section.full-width .pulse-container {
+    max-width: none;
+    padding: 0;
+}
+
+/* ------------------------------------------------------------------
+   8. HERO
+   ------------------------------------------------------------------ */
+.pulse-hero {
+    background: linear-gradient(135deg, var(--pulse-primary), var(--pulse-secondary));
+    padding: 100px 24px;
+    position: relative;
+    color: white;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Hero Background Pattern */
+.pulse-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.05;
+    background-image: 
+        radial-gradient(circle at 20% 50%, #ffffff 1px, transparent 1px),
+        radial-gradient(circle at 80% 20%, #ffffff 1px, transparent 1px),
+        radial-gradient(circle at 50% 80%, #ffffff 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+
+/* Hero Gradient Overlay */
+.pulse-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 30%, rgba(37, 99, 235, 0.15), transparent 60%),
+                radial-gradient(ellipse at 30% 70%, rgba(217, 119, 6, 0.08), transparent 50%);
+    pointer-events: none;
+}
+
+.pulse-hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.pulse-hero h1 {
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    margin: 0 0 16px;
+    color: #ffffff;
+}
+
+.pulse-hero h1 .highlight {
+    background: linear-gradient(135deg, var(--pulse-secondary-light), var(--pulse-accent-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.pulse-hero p {
+    max-width: 680px;
+    margin: 0 auto 24px;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.pulse-hero .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+}
+
+.pulse-hero .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: var(--pulse-space-lg);
+}
+
+.pulse-hero .pulse-hero-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--pulse-space-xl);
+    margin-top: var(--pulse-space-2xl);
+    padding-top: var(--pulse-space-xl);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pulse-hero .pulse-hero-stat .number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #ffffff;
+    display: block;
+    line-height: 1.2;
+}
+
+.pulse-hero .pulse-hero-stat .label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.pulse-hero .pulse-hero-search {
+    display: flex;
+    gap: 0;
+    max-width: 480px;
+    margin: var(--pulse-space-lg) auto 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--pulse-radius);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    transition: var(--pulse-transition);
+}
+
+.pulse-hero .pulse-hero-search:focus-within {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.05);
+}
+
+.pulse-hero .pulse-hero-search input {
+    flex: 1;
+    padding: 0.85rem 1.25rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-family: var(--pulse-body-font);
+}
+
+.pulse-hero .pulse-hero-search input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.pulse-hero .pulse-hero-search button {
+    padding: 0.85rem 1.75rem;
+    background: var(--pulse-secondary);
+    color: #ffffff;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--pulse-transition);
+}
+
+.pulse-hero .pulse-hero-search button:hover {
+    background: var(--pulse-secondary-dark);
+}
+
+.pulse-hero-pro {
+    min-height: 720px;
+    text-align: left;
+    padding: 84px 0 96px;
+    background:
+        linear-gradient(135deg, rgba(10, 22, 40, .95), rgba(26, 82, 118, .92) 52%, rgba(243, 156, 18, .86)),
+        url("data:image/svg+xml,%3Csvg width='140' height='140' viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(255,255,255,.22)' stroke-width='1'%3E%3Cpath d='M0 70h140M70 0v140'/%3E%3Ccircle cx='70' cy='70' r='38'/%3E%3C/g%3E%3C/svg%3E");
+}
+.pulse-hero-pro::before,
+.pulse-hero-pro::after { display: none; }
+.pulse-hero-pro-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.04fr) minmax(340px, .8fr);
+    gap: 42px;
+    align-items: center;
+}
+.pulse-hero-copy { position: relative; z-index: 2; }
+.pulse-hero-copy h1 {
+    max-width: 760px;
+    line-height: .96;
+}
+.pulse-hero-copy p {
+    margin-left: 0;
+    max-width: 680px;
+    color: rgba(255,255,255,.82);
+}
+.pulse-hero-copy .actions,
+.pulse-hero-copy .pulse-hero-search {
+    justify-content: flex-start;
+    margin-left: 0;
+}
+.pulse-command-panel {
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 24px;
+    padding: 18px;
+    background: rgba(255,255,255,.12);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 30px 80px rgba(0,0,0,.28);
+}
+.pulse-command-top { display: flex; gap: 8px; margin-bottom: 22px; }
+.pulse-command-top span { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.72); }
+.pulse-command-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px;
+    border-radius: 16px;
+    background: rgba(255,255,255,.9);
+    color: #0f172a;
+}
+.pulse-command-row strong { font-size: 1.1rem; }
+.pulse-command-row em { font-style: normal; font-weight: 900; color: #047857; }
+.pulse-command-meter { height: 10px; margin: 18px 0; border-radius: 999px; background: rgba(255,255,255,.2); overflow: hidden; }
+.pulse-command-meter span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #22c55e, var(--pulse-accent)); }
+.pulse-command-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.pulse-command-grid div { padding: 18px; border-radius: 16px; background: rgba(15,23,42,.42); color: #fff; }
+.pulse-command-grid b { display: block; font-size: 1.6rem; line-height: 1; }
+.pulse-command-grid small { color: rgba(255,255,255,.68); }
+.pulse-services-band { background: #ffffff; }
+.pulse-section-heading { max-width: 720px; margin-bottom: 30px; }
+.pulse-section-heading .eyebrow { color: var(--pulse-accent); font-weight: 900; text-transform: uppercase; font-size: .78rem; }
+.pulse-section-heading h2 { margin: 10px 0; }
+.pulse-service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.pulse-service-card span { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 14px; color: #fff; background: linear-gradient(135deg, var(--pulse-primary), var(--pulse-secondary)); margin-bottom: 18px; }
+.pulse-service-card h3 { margin-bottom: 10px; }
+
+/* ------------------------------------------------------------------
+   9. CARDS
+   ------------------------------------------------------------------ */
+.pulse-card {
+    background: var(--pulse-bg-card);
+    border-radius: var(--pulse-radius-lg);
+    padding: 24px;
+    border: 1px solid var(--pulse-border);
+    box-shadow: var(--pulse-shadow);
+    transition: all var(--pulse-transition);
+}
+
+.pulse-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--pulse-shadow-lg);
+}
+
+/* ------------------------------------------------------------------
+   10. PRICING
+   ------------------------------------------------------------------ */
+.pulse-pricing-table {
+    border: 2px solid var(--pulse-border);
+    border-radius: var(--pulse-radius-lg);
+    overflow: hidden;
+}
+
+.pulse-pricing-table.featured {
+    border-color: var(--pulse-accent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--pulse-accent), transparent 80%);
+}
+
+.pulse-pricing-header {
+    background: var(--pulse-primary);
+    color: white;
+    padding: 24px;
+    text-align: center;
+}
+
+.pulse-pricing-price {
+    font-size: 48px;
+    font-weight: 800;
+}
+
+.pulse-pricing-price span {
+    font-size: 18px;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+/* ------------------------------------------------------------------
+   11. BUTTONS
+   ------------------------------------------------------------------ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    font-family: var(--pulse-body-font);
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-decoration: none;
+    border: none;
+    border-radius: var(--pulse-radius);
+    transition: all var(--pulse-transition);
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--pulse-primary);
+    color: #ffffff;
+    box-shadow: var(--pulse-shadow-md);
+}
+.btn-primary:hover {
+    background: var(--pulse-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--pulse-shadow-lg);
+}
+
+.btn-secondary {
+    background: var(--pulse-secondary);
+    color: #ffffff;
+    box-shadow: var(--pulse-shadow-md);
+}
+.btn-secondary:hover {
+    background: var(--pulse-secondary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--pulse-shadow-lg);
+}
+
+.btn-accent {
+    background: var(--pulse-accent);
+    color: #ffffff;
+    box-shadow: var(--pulse-shadow-md);
+}
+.btn-accent:hover {
+    background: var(--pulse-accent-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--pulse-shadow-lg);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--pulse-primary);
+    border: 2px solid var(--pulse-border);
+}
+.btn-outline:hover {
+    background: var(--pulse-primary);
+    color: #ffffff;
+    border-color: var(--pulse-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--pulse-shadow-md);
+}
+
+.btn-light {
+    background: #ffffff;
+    color: var(--pulse-primary);
+    box-shadow: var(--pulse-shadow-md);
+}
+.btn-light:hover {
+    background: var(--pulse-bg-secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--pulse-shadow-lg);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+.btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.btn-sm { padding: 0.5rem 1.25rem; font-size: 0.85rem; }
+.btn-lg { padding: 1rem 2.5rem; font-size: 1.05rem; }
+.btn-block { width: 100%; justify-content: center; }
+
+/* ------------------------------------------------------------------
+   12. FOOTER
+   ------------------------------------------------------------------ */
+.pulse-site-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--pulse-container-width);
+    margin: 40px auto 0;
+    padding: 18px 24px;
+    border-top: 1px solid var(--pulse-border);
+    color: var(--pulse-text-secondary);
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.pulse-site-footer > div {
+    display: grid;
+    gap: 4px;
+}
+
+.pulse-site-footer nav {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.pulse-site-footer a {
+    color: var(--pulse-text-secondary);
+    text-decoration: none;
+    transition: var(--pulse-transition);
+}
+.pulse-site-footer a:hover {
+    color: var(--pulse-text);
+}
+
+.pulse-site-footer small {
+    color: var(--pulse-text-muted);
+    font-size: 0.85rem;
+}
+
+.pulse-footer-brand {
+    font-weight: 700;
+    color: var(--pulse-primary);
+}
+
+.pulse-footer-brand img {
+    max-height: 42px;
+    width: auto;
+    display: block;
+}
+
+/* ------------------------------------------------------------------
+   13. FOOTER MODERN (Enhanced)
+   ------------------------------------------------------------------ */
+.pulse-footer-modern .pulse-site-footer {
+    background: var(--pulse-primary);
+    color: rgba(255, 255, 255, 0.6);
+    border-top: none;
+    padding: var(--pulse-space-2xl) var(--pulse-space-xl);
+    margin-top: auto;
+    border-radius: 0;
+}
+
+.pulse-footer-modern .pulse-site-footer > div {
+    grid-template-columns: 2fr 1fr 1fr;
+    max-width: var(--pulse-container-width);
+    margin: 0 auto;
+    width: 100%;
+    gap: var(--pulse-space-xl);
+}
+
+.pulse-footer-modern .pulse-footer-brand {
+    color: #ffffff;
+}
+
+.pulse-footer-modern .pulse-site-footer a {
+    color: rgba(255, 255, 255, 0.6);
+}
+.pulse-footer-modern .pulse-site-footer a:hover {
+    color: #ffffff;
+}
+
+.pulse-footer-modern .pulse-site-footer small {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.pulse-footer-modern .pulse-site-footer .pulse-footer-social {
+    display: flex;
+    gap: var(--pulse-space-md);
+}
+
+.pulse-footer-modern .pulse-site-footer .pulse-footer-social a {
+    font-size: 1.2rem;
+}
+
+/* ------------------------------------------------------------------
+   14. PAGES
+   ------------------------------------------------------------------ */
+.pulse-page {
+    max-width: var(--pulse-container-width);
+    margin: 0 auto;
+    padding: 70px 24px;
+}
+
+.pulse-page h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    margin-bottom: 12px;
+    color: var(--pulse-primary);
+}
+
+.pulse-lead {
+    color: var(--pulse-text-secondary);
+    font-size: 1.15rem;
+    line-height: 1.7;
+    max-width: 760px;
+}
+
+.pulse-content {
+    line-height: 1.8;
+    font-size: 1.04rem;
+}
+
+.pulse-page-image {
+    width: 100%;
+    max-height: 440px;
+    object-fit: cover;
+    border-radius: var(--pulse-radius);
+    margin-bottom: 24px;
+}
+
+.pulse-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin-top: 24px;
+}
+
+/* ------------------------------------------------------------------
+   15. CTA
+   ------------------------------------------------------------------ */
+.pulse-cta {
+    background: linear-gradient(135deg, var(--pulse-primary), var(--pulse-primary-dark));
+    border-radius: var(--pulse-radius-xl);
+    padding: var(--pulse-space-3xl) var(--pulse-space-2xl);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.pulse-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 30%, rgba(37, 99, 235, 0.2), transparent 60%);
+    pointer-events: none;
+}
+
+.pulse-cta h2 {
+    color: #ffffff;
+    margin-bottom: var(--pulse-space-md);
+    position: relative;
+}
+
+.pulse-cta p {
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 560px;
+    margin: 0 auto var(--pulse-space-xl);
+    position: relative;
+    font-size: 1.05rem;
+}
+
+.pulse-cta .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--pulse-space-md);
+    justify-content: center;
+    position: relative;
+}
+
+/* ------------------------------------------------------------------
+   16. ANIMATIONS
+   ------------------------------------------------------------------ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-fade-up {
+    animation: fadeInUp 0.6s ease forwards;
+}
+.animate-fade-in {
+    animation: fadeIn 0.4s ease forwards;
+}
+.animate-slide-left {
+    animation: slideInLeft 0.6s ease forwards;
+}
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+
+/* ------------------------------------------------------------------
+   17. RESPONSIVE
+   ------------------------------------------------------------------ */
+@media (max-width: 768px) {
+    .pulse-site-header {
+        padding: 12px 16px;
+    }
+    
+    .pulse-site-header nav {
+        display: none;
+    }
+    
+    .pulse-mobile-toggle {
+        display: flex;
+    }
+    
+    .pulse-hero {
+        padding: 60px 16px;
+        min-height: auto;
+    }
+    
+    .pulse-hero h1 {
+        font-size: clamp(2rem, 8vw, 2.8rem);
+    }
+    
+    .pulse-hero .pulse-hero-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--pulse-space-lg);
+    }
+    
+    .pulse-pricing-price {
+        font-size: 36px;
+    }
+    
+    .pulse-footer-modern .pulse-site-footer > div {
+        grid-template-columns: 1fr;
+        gap: var(--pulse-space-lg);
+    }
+    
+    .pulse-section {
+        padding: var(--pulse-space-2xl) 0;
+    }
+    
+    .pulse-cta {
+        padding: var(--pulse-space-xl) var(--pulse-space-md);
+    }
+    
+    .pulse-hero .pulse-hero-search {
+        flex-direction: column;
+        background: transparent;
+        border: none;
+    }
+    
+    .pulse-hero .pulse-hero-search input {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: var(--pulse-radius);
+        margin-bottom: var(--pulse-space-sm);
+    }
+    
+    .pulse-hero .pulse-hero-search button {
+        border-radius: var(--pulse-radius);
+    }
+
+    .pulse-hero-pro {
+        min-height: auto;
+        padding: 58px 0 70px;
+    }
+
+    .pulse-hero-pro-grid,
+    .pulse-service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pulse-command-panel {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .pulse-site-footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+    
+    .pulse-site-footer nav {
+        justify-content: center;
+    }
+    
+    .pulse-hero .pulse-hero-stats {
+        grid-template-columns: 1fr;
+    }
+}

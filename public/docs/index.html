@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JamVini Developer Documentation</title>
+    <link rel="stylesheet" href="./assets/docs.css">
+</head>
+<body>
+<div class="docs-shell">
+    <aside class="docs-sidebar">
+        <div class="docs-brand">
+            <span class="docs-mark">JV</span>
+            <span>
+                <strong>JamVini Docs</strong>
+                <small>Developer system reference</small>
+            </span>
+        </div>
+        <label class="docs-search">
+            <span>Search</span>
+            <input id="docsSearch" type="search" placeholder="Find hooks, API, cron, registries...">
+        </label>
+        <nav id="docsNav">
+            <a href="#overview">Overview</a>
+            <a href="#architecture">Core Engine</a>
+            <a href="#plugins">Plugin Structure</a>
+            <a href="#lifecycle">Lifecycle</a>
+            <a href="#registries">Registries</a>
+            <a href="#hooks">Hooks</a>
+            <a href="#api">RESTful API</a>
+            <a href="#cron">Cron</a>
+            <a href="#custom-fields">Custom Fields</a>
+            <a href="#reports">Reports</a>
+            <a href="#security">Security</a>
+            <a href="#fresh-install">Fresh Install</a>
+        </nav>
+    </aside>
+
+    <main class="docs-main">
+        <section id="overview" class="docs-hero" data-doc-section>
+            <p class="eyebrow">JamVini Project Documentation</p>
+            <h1>Developer documentation for the JamVini hosting platform.</h1>
+            <p>This HTML documentation explains the core engine, plugin lifecycle, hooks, registries, REST API, cron system, and current extension points. It is project documentation, not a customer user guide.</p>
+        </section>
+
+        <section id="architecture" class="docs-card" data-doc-section>
+            <h2>Core Engine</h2>
+            <p>JamVini is built as a Laravel application with a plugin-first engine. Core provides bootstrapping, authentication, routing, registries, hooks, shared helpers, installer behavior, and system-level orchestration. Business capabilities live in plugins.</p>
+            <div class="docs-grid">
+                <article>
+                    <h3>Core Responsibilities</h3>
+                    <ul>
+                        <li>Plugin discovery through <code>App\Core\PluginManager</code></li>
+                        <li>Admin/client authentication and permissions</li>
+                        <li>Menu, dashboard, report, registrar, payment, provisioning, and setting registries</li>
+                        <li>Installer, migrations, update flow, cron manager, and API token middleware</li>
+                        <li>Theme and plugin view namespaces</li>
+                    </ul>
+                </article>
+                <article>
+                    <h3>Plugin Responsibilities</h3>
+                    <ul>
+                        <li>Declare a <code>plugin.json</code> manifest</li>
+                        <li>Ship routes, hooks, views, controllers, models, migrations, and services</li>
+                        <li>Register widgets, reports, registrars, payment gateways, cron tasks, or provisioning modules</li>
+                        <li>Keep behavior inside the plugin directory wherever possible</li>
+                    </ul>
+                </article>
+            </div>
+            <div class="docs-flow">
+                <span>HTTP Request</span><span>Laravel Routing</span><span>Plugin Routes</span><span>Controller / Service</span><span>Hooks / Registries</span>
+            </div>
+        </section>
+
+        <section id="plugins" class="docs-card" data-doc-section>
+            <h2>Plugin Structure</h2>
+            <p>A production JamVini plugin should be installable without editing core files. The plugin folder name may use StudlyCase, but the manifest slug is the stable identifier used by menus, permissions, and plugin state.</p>
+            <pre><code>plugins/ExamplePlugin/
+  plugin.json
+  routes.php
+  hooks.php
+  migrations/
+    0001_create_example_tables.php
+  src/
+    Controllers/
+    Models/
+    Services/
+  views/
+    admin/
+    public/
+    client/</code></pre>
+            <h3>Manifest Example</h3>
+            <pre><code>{
+  "name": "Example Plugin",
+  "slug": "example-plugin",
+  "version": "1.0.0",
+  "core": false,
+  "dependencies": ["clients"],
+  "menu": {
+    "admin": {
+      "icon": "puzzle",
+      "label": "Example",
+      "route": "admin.example.index",
+      "position": 80,
+      "section": "main"
+    }
+  },
+  "permissions": ["example-plugin.read", "example-plugin.write", "example-plugin.manage"]
+}</code></pre>
+        </section>
+
+        <section id="lifecycle" class="docs-card" data-doc-section>
+            <h2>Plugin Lifecycle</h2>
+            <p>The lifecycle is managed by <code>PluginManager</code>. System plugins are synced from manifests. Active plugins expose routes and hooks. Fresh installs run migrations for core plugins.</p>
+            <div class="docs-table-wrap">
+                <table>
+                    <thead><tr><th>Step</th><th>What Happens</th><th>Developer Notes</th></tr></thead>
+                    <tbody>
+                        <tr><td>Scan</td><td>Reads every plugin manifest under <code>plugins/</code>.</td><td>Manifest JSON must be valid.</td></tr>
+                        <tr><td>Install</td><td>Creates a row in <code>plugins</code>.</td><td>Does not necessarily activate.</td></tr>
+                        <tr><td>Activate</td><td>Runs plugin migrations, routes, hooks, and marks active.</td><td>Migration files must be idempotent.</td></tr>
+                        <tr><td>Boot</td><td>Registers active plugin menus, permissions, reports, and hooks.</td><td>Hook files should stay light.</td></tr>
+                        <tr><td>Deactivate</td><td>Disables plugin and clears registered menu/widgets/permissions/reports.</td><td>System plugins cannot be deactivated through normal flow.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="registries" class="docs-card" data-doc-section>
+            <h2>Registries</h2>
+            <p>Registries are lightweight in-memory extension points. Plugins register capabilities during boot, then controllers and views read from registries to build UI and behavior.</p>
+            <div class="docs-grid">
+                <article>
+                    <h3>MenuRegistry</h3>
+                    <p>Registers admin and client menu entries from plugin manifests.</p>
+                    <pre><code>MenuRegistry::registerAdmin('example', [
+  'label' => 'Example',
+  'route' => 'admin.example.index',
+  'icon' => 'puzzle',
+  'section' => 'main'
+]);</code></pre>
+                </article>
+                <article>
+                    <h3>DashboardRegistry</h3>
+                    <p>Registers dashboard widgets with size, color, column, and admin-customizable order.</p>
+                    <pre><code>DashboardRegistry::registerWidget('sales-pulse', fn () =>
+  view('plugins.Example::admin.widgets.sales'),
+  ['title' => 'Sales Pulse', 'size' => 'medium']
+);</code></pre>
+                </article>
+                <article>
+                    <h3>ReportRegistry</h3>
+                    <p>Registers report definitions and handlers for the Reports plugin.</p>
+                    <pre><code>ReportRegistry::register('sales.monthly', ReportHandler::class, [
+  'label' => 'Monthly Sales',
+  'category' => 'Sales',
+  'filters' => ['date_range']
+]);</code></pre>
+                </article>
+                <article>
+                    <h3>PermissionRegistry</h3>
+                    <p>Registers plugin permission modules. Admin routes use <code>admin.permission:{module},{level}</code>.</p>
+                    <pre><code>Route::middleware(['auth:admin', 'admin.permission:example-plugin,auto'])
+  ->prefix('admin/example')
+  ->name('admin.example.')
+  ->group(...);</code></pre>
+                </article>
+                <article>
+                    <h3>RegistrarRegistry</h3>
+                    <p>Registers domain registrars and supported TLDs.</p>
+                    <pre><code>RegistrarRegistry::register('manual', [
+  'name' => 'Manual Registrar',
+  'tlds' => ['.com', '.tz'],
+  'class' => ManualRegistrar::class
+]);</code></pre>
+                </article>
+                <article>
+                    <h3>Payment / Provisioning</h3>
+                    <p><code>PaymentGatewayRegistry</code> exposes enabled gateways. <code>ProvisioningModuleRegistry</code> selects hosting modules by server type.</p>
+                    <pre><code>PaymentGatewayRegistry::register('selcom', SelcomGateway::class);
+ProvisioningModuleRegistry::register(new CpanelModule());</code></pre>
+                </article>
+            </div>
+        </section>
+
+        <section id="hooks" class="docs-card" data-doc-section>
+            <h2>Hooks</h2>
+            <p>Hooks allow plugins to observe or modify system behavior. Action hooks are event-style. Filter hooks transform a value. Both support priorities; lower priority numbers run first.</p>
+            <div class="docs-grid">
+                <article>
+                    <h3>Action Hooks</h3>
+                    <pre><code>use App\Core\Hooks\Action;
+
+Action::add('client.created', function ($client) {
+    // Send onboarding email, sync CRM, or log event.
+}, priority: 10);
+
+Action::do('client.created', $client);</code></pre>
+                </article>
+                <article>
+                    <h3>Filter Hooks</h3>
+                    <pre><code>use App\Core\Hooks\Filter;
+
+Filter::add('invoice.total', function ($total, $invoice) {
+    return $total;
+}, priority: 20);
+
+$total = Filter::apply('invoice.total', $total, $invoice);</code></pre>
+                </article>
+                <article>
+                    <h3>Conditional Actions</h3>
+                    <p><code>Action::first()</code> returns the first non-null result. <code>Action::until()</code> stops and returns false when a callback returns false.</p>
+                    <pre><code>$result = Action::first('domain.before_register', $domain);
+
+if (! Action::until('service.before_suspend', $service)) {
+    return back()->with('error', 'Suspension blocked.');
+}</code></pre>
+                </article>
+                <article>
+                    <h3>Known Hook Points</h3>
+                    <ul>
+                        <li><code>client.created</code>, <code>client.updated</code>, <code>client.deleting</code>, <code>client.deleted</code></li>
+                        <li><code>client.registration.validation_rules</code>, <code>client.registration.created</code>, <code>auth.register.extra_fields</code></li>
+                        <li><code>frontend.homepage</code>, <code>shortcode.{name}</code>, <code>api.local_action</code></li>
+                        <li><code>invoice.paid</code></li>
+                        <li><code>support.ticket_created</code></li>
+                        <li><code>custom_fields.created</code>, <code>custom_fields.updated</code>, <code>custom_fields.deleted</code>, <code>custom_fields.values_saved</code></li>
+                        <li><code>reports.registered</code>, <code>reports.exported</code></li>
+                        <li><code>plugins.booted</code></li>
+                    </ul>
+                </article>
+            </div>
+            <div class="docs-note">Best practice: keep hook callbacks small. Put business logic in services, and queue slow external calls where possible.</div>
+        </section>
+
+        <section id="api" class="docs-card" data-doc-section>
+            <h2>RESTful API</h2>
+            <p>JamVini exposes a versioned API under <code>/api/v1</code>. Requests must include a valid token through <code>Authorization: Bearer {token}</code> or <code>X-API-Token</code>. API calls are logged to <code>api_logs</code> when the table exists.</p>
+            <h3>Authentication</h3>
+            <pre><code>curl -H "Authorization: Bearer YOUR_TOKEN" \
+  https://example.com/api/v1/clients</code></pre>
+            <div class="docs-table-wrap">
+                <table>
+                    <thead><tr><th>Method</th><th>Endpoint</th><th>Purpose</th><th>Internal Action</th></tr></thead>
+                    <tbody>
+                        <tr><td>GET</td><td><code>/api/v1/clients</code></td><td>List latest clients</td><td><code>GetClients</code></td></tr>
+                        <tr><td>POST</td><td><code>/api/v1/clients</code></td><td>Create a client</td><td><code>CreateClient</code></td></tr>
+                        <tr><td>GET</td><td><code>/api/v1/invoices</code></td><td>List latest invoices</td><td><code>GetInvoices</code></td></tr>
+                        <tr><td>GET</td><td><code>/api/v1/services</code></td><td>List latest client services</td><td><code>GetServices</code></td></tr>
+                        <tr><td>GET</td><td><code>/api/v1/domains</code></td><td>List latest domains</td><td><code>GetDomains</code></td></tr>
+                        <tr><td>GET</td><td><code>/api/v1/tickets</code></td><td>List latest support tickets</td><td>Direct query</td></tr>
+                        <tr><td>POST</td><td><code>/api/v1/local</code></td><td>Call an internal API action</td><td>Dynamic</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <h3>Creating a Client</h3>
+            <pre><code>curl -X POST https://example.com/api/v1/clients \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "client@example.com",
+    "first_name": "Asha",
+    "last_name": "Mushi",
+    "phone": "+255712345678",
+    "company_name": "Asha Hosting"
+  }'</code></pre>
+            <h3>Internal API</h3>
+            <p><code>App\Core\Api\InternalApi</code> provides WHMCS-like local actions for hooks and modules. Current actions include <code>CreateClient</code>, <code>UpdateClient</code>, <code>GetClients</code>, <code>GetInvoices</code>, <code>GetServices</code>, and <code>GetDomains</code>.</p>
+            <pre><code>$result = app(InternalApi::class)->call('CreateClient', [
+  'email' => 'client@example.com',
+  'first_name' => 'Asha',
+]);</code></pre>
+            <h3>Plugin API Actions</h3>
+            <p>Plugins can add local API actions without editing core by listening to <code>api.local_action</code>. Return <code>null</code> when the action is not yours.</p>
+            <pre><code>Filter::add('api.local_action', function ($result, string $action, array $params) {
+    if ($action !== 'MyPlugin.DoThing') {
+        return $result;
+    }
+
+    return ['success' => true, 'data' => ['done' => true]];
+}, 10, 3);</code></pre>
+        </section>
+
+        <section id="cron" class="docs-card" data-doc-section>
+            <h2>Cron</h2>
+            <p>The cron engine is managed by <code>App\Core\CronManager</code>. Tasks are registered in PHP, stored in memory for the request, and their run state is tracked in cache and settings. Admins can view, run, disable, and regenerate the web cron key from the Cron Manager screen.</p>
+            <div class="docs-grid">
+                <article>
+                    <h3>Register a Task</h3>
+                    <pre><code>use App\Core\CronManager;
+
+CronManager::register('sync-domain-expiry', 'daily', function () {
+    // Update domain expiry dates.
+    return 'Domain expiry sync complete.';
+}, [
+    'description' => 'Sync domain expiry dates'
+]);</code></pre>
+                </article>
+                <article>
+                    <h3>Supported Schedules</h3>
+                    <ul>
+                        <li><code>everyMinute</code>, <code>everyFiveMinutes</code>, <code>everyFifteenMinutes</code></li>
+                        <li><code>everyThirtyMinutes</code>, <code>hourly</code>, <code>daily</code></li>
+                        <li><code>weekly</code>, <code>monthly</code></li>
+                    </ul>
+                </article>
+            </div>
+            <h3>Web Cron</h3>
+            <p>For shared hosting, JamVini exposes <code>/cron?key={cron_key}</code>. The key is generated in the admin Cron Manager. The server cron should call that URL every minute.</p>
+            <pre><code>* * * * * curl -s 'https://example.com/cron?key=YOUR_KEY' > /dev/null 2>&1</code></pre>
+            <div class="docs-note">Cron tasks should be idempotent. A task may be retried after a failure, and long-running external calls should be guarded carefully.</div>
+        </section>
+
+        <section id="custom-fields" class="docs-card" data-doc-section>
+            <h2>Custom Fields</h2>
+            <p>The Custom Fields plugin stores reusable field definitions in <code>custom_fields</code> and values in <code>custom_field_values</code>. It currently integrates with client registration and admin client profiles, and is structured for future order, service, domain, and ticket fields.</p>
+            <div class="docs-grid">
+                <article>
+                    <h3>Supported Types</h3>
+                    <p>Text, textarea, email, URL, number, date, select, radio, checkbox, and yes/no fields.</p>
+                </article>
+                <article>
+                    <h3>Visibility Controls</h3>
+                    <p>Fields can be active/inactive, required, visible to clients, shown on registration, and shown on the admin profile.</p>
+                </article>
+            </div>
+            <pre><code>app(CustomFieldService::class)
+    ->fields('client', ['registration' => true]);
+
+app(CustomFieldService::class)
+    ->sync($client, 'client', request('custom_fields', []));</code></pre>
+        </section>
+
+        <section id="reports" class="docs-card" data-doc-section>
+            <h2>Reports</h2>
+            <p>The Reports plugin uses <code>ReportRegistry</code> so core and plugins can publish report definitions. Built-in reports cover billing, clients, sales, domains, services, support, and SEO analytics.</p>
+            <pre><code>ReportRegistry::register('billing.revenue-summary', [Handler::class, 'handle'], [
+  'label' => 'Revenue Summary',
+  'category' => 'Billing',
+  'icon' => 'dollar-sign',
+  'filters' => ['date_range'],
+  'exportable' => true
+]);</code></pre>
+            <p>Report handlers should return <code>summary</code>, <code>columns</code>, <code>rows</code>, and optionally <code>chart</code>.</p>
+        </section>
+
+        <section id="security" class="docs-card" data-doc-section>
+            <h2>Security Guidelines</h2>
+            <ul>
+                <li>Admin routes should use <code>auth:admin</code> and <code>admin.permission</code>.</li>
+                <li>API routes should use <code>jamvini.api</code> and avoid returning secrets.</li>
+                <li>Plugin migrations should use explicit index names for MySQL compatibility.</li>
+                <li>Do not store raw API tokens. JamVini stores <code>token_hash</code> with SHA-256.</li>
+                <li>Hooks should not trust external payloads. Validate before creating records.</li>
+                <li>Background jobs and cron tasks should avoid leaking credentials into activity logs.</li>
+            </ul>
+        </section>
+
+        <section id="fresh-install" class="docs-card" data-doc-section>
+            <h2>Fresh Install Checklist</h2>
+            <ul>
+                <li>Installer runs core Laravel migrations first.</li>
+                <li>Core plugin manifests are synced before active plugin routes are loaded.</li>
+                <li>Installer runs migrations for core plugins after sorting by dependencies.</li>
+                <li>Custom Fields should appear under the System menu after install.</li>
+                <li>Reports should appear in the main admin menu when active.</li>
+                <li>Run System → Run Migrations after adding plugin files to an existing installation.</li>
+                <li>Clear view and route cache after changing Blade views, routes, plugin manifests, or theme files.</li>
+            </ul>
+        </section>
+    </main>
+</div>
+<script src="./assets/docs.js"></script>
+</body>
+</html>

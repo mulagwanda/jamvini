@@ -1,0 +1,23 @@
+{
+    "name": "Hosting",
+    "slug": "hosting",
+    "version": "1.0.0",
+    "description": "Hosting service module with server provisioning",
+    "author": "JamVini",
+    "type": "module",
+    "core": true,
+    "dependencies": ["services"],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "server",
+            "label": "Hosting",
+            "route": "admin.hosting.settings",
+            "position": 22,
+            "section": "operations"
+        }
+    },
+    "permissions": ["manage_hosting"],
+    "hooks_provides": ["hosting.provisioned", "hosting.suspended"],
+    "hooks_listens": ["invoice.paid", "order.completed"]
+}

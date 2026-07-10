@@ -1,0 +1,29 @@
+{
+    "name": "Invoice & Billing",
+    "slug": "invoices",
+    "version": "1.0.0",
+    "description": "Generate invoices, track payments, and manage billing",
+    "author": "JamVini",
+    "type": "module",
+    "core": true,
+    "dependencies": ["clients", "services"],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "file-text",
+            "label": "Invoices",
+            "route": "admin.invoices.index",
+            "position": 40,
+            "section": "main"
+        }
+    },
+    "permissions": ["manage_invoices"],
+    "hooks_provides": [
+        "invoice.created",
+        "invoice.updated",
+        "invoice.paid",
+        "invoice.sent",
+        "invoice.deleted"
+    ],
+    "hooks_listens": []
+}

@@ -1,0 +1,23 @@
+{
+    "name": "Domain Management",
+    "slug": "domains",
+    "version": "1.0.0",
+    "description": "Track and manage client domain registrations",
+    "author": "JamVini",
+    "type": "module",
+    "core": true,
+    "dependencies": ["clients"],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "globe",
+            "label": "Domains",
+            "route": "admin.domains.index",
+            "position": 30,
+            "section": "operations"
+        }
+    },
+    "permissions": ["manage_domains"],
+    "hooks_provides": ["domain.created", "domain.updated", "domain.deleted", "domain.expiring"],
+    "hooks_listens": []
+}

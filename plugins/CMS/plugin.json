@@ -1,0 +1,28 @@
+{
+    "name": "Content Management System",
+    "slug": "cms",
+    "version": "1.0.0",
+    "description": "Manage pages, posts, and categories",
+    "author": "JamVini",
+    "type": "module",
+    "core": true,
+    "dependencies": ["media"],
+    "min_core_version": "1.0.0",
+    "menu": {
+        "admin": {
+            "icon": "notebook-pen",
+            "label": "Content",
+            "route": "admin.cms.pages.index",
+            "position": 15,
+            "section": "catalog",
+            "children": [
+                {"label": "Pages", "route": "admin.cms.pages.index"},
+                {"label": "Posts", "route": "admin.cms.posts.index"},
+                {"label": "Categories", "route": "admin.cms.categories.index"}
+            ]
+        }
+    },
+    "permissions": ["manage_cms"],
+    "hooks_provides": ["cms.page_created", "cms.post_published"],
+    "hooks_listens": []
+}
